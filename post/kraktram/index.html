@@ -196,7 +196,7 @@
 <p>Od pewnego czasu na stronie <a href="http://www.ttss.krakow.pl/">ttss.krakow.pl</a> możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (<em>Traffic Tram Supervision System</em>), na <a href="http://www.ttss.krakow.pl/internetservice/">ttss.krakow.pl/internetservice/</a>. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił <em>pro publico bono</em> znacznie wygodniejszą wersję mapki (<a href="https://mpk.jacekk.net" class="uri">https://mpk.jacekk.net</a>). Od tego czasu powstało też kilka innych stron i aplikacji oferujących dostęp do serwisu. Natomiast ja postanowiłem pobrać z niego trochę danych i na ich podstawie przeanalizować, jak się spóźniają krakowskie tramwaje.</p>
 <div style="background-color: #e2e2e2; padding: 10px; margin: 5px 10px;">
 <p><em>Fragmenty z szarym tłem będą poświęcone bardziej technicznym tematom.</em></p>
-<em>Żeby wpis był czytelniejszy pomijam fragmenty kodu przy wykresach i obróbce danych. Całość można znaleźć na GitHubie, pod tym linkiem</em>
+<em>Żeby wpis był czytelniejszy pomijam fragmenty kodu przy wykresach i obróbce danych. Całość można znaleźć na GitHubie, pod tym <a href="https://github.com/aczepielik/KRKtram/blob/master/analysis.Rmd">linkiem</a></em>
 </div>
 <ul>
 <li>
@@ -258,7 +258,7 @@
 </li>
 </ul>
 <div style="border: 3px solid #316675; margin: 5px; padding: 10px">
-Za długie? Zobacz streszczenie (eng)
+Za długie? Zobacz <a href="../../en/post/kraktram.en/">streszczenie (eng)</a>
 </div>
 <div id="pobieranie-i-czyszczenie-danych" class="section level1">
 <h1>Pobieranie i czyszczenie danych</h1>
@@ -274,9 +274,9 @@ Za długie? Zobacz streszczenie (eng)
 </ul>
 <p>I tak na przykład odpytując adres <a href="http://www.ttss.krakow.pl/internetservice/services/passageInfo/stopPassages/stop?stop=77" class="uri">http://www.ttss.krakow.pl/internetservice/services/passageInfo/stopPassages/stop?stop=77</a> dostaniemy dane o odjazdach z Teatru Bagatela. Numery Id przystanków można wziąć ze <code>stopinfo</code>, więc żeby zbadać spóźnienia, nie pozostaje nic innego jak sprawdzać wszystkie przystanki po kolei. Trzeba tylko uważać na drobne różnice w formatach odpowiedzi.</p>
 <p>Takie sprawdzanie wszystkich przystanków trochę trwa. Na moim komputerze jedna runda zapytań o wszystkie przystanki trwała nieco ponad 20 sekund. Teoretycznie można by to zrobić o wiele szybciej: pobrać położenia wszystkich tramwajów (jeden plik), sprawdzić czy znajdują się w pobliżu przystanków i porównać z rozkładami jazdy. Niestety skojarzenie konkretnego pojazdu z rozkładem nie byłoby proste, biorąc pod uwagę, że niektóre z nich nie są podłączone do TTSS.</p>
-<p><em>Skrypt do pobierania danych z przystanków można znaleźć pod tym <a href="https://github.com/aczepielik/KRKtram/blob/master/report_generator.R">linkiem</a>. Funkcje z których korzysta skrypt, <a href="https://github.com/aczepielik/KRKtram/blob/master/report_funs.R">tutaj</a>.</em></p>
+<p><em>Skrypt do pobierania danych z przystanków można znaleźć pod tym <a href="https://github.com/aczepielik/KRKtram/blob/master/report_generator.R">linkiem</a>. Funkcje z których korzysta skrypt, <a href="https://github.com/aczepielik/KRKtram/blob/master/report_funs.R">tutaj</a>. Pobrane i wyczyszczone dane <a href="https://github.com/aczepielik/KRKtram/tree/master/reports">tu</a>.</em></p>
 <p>Strona TTSS pokazuje przystanki poszczególnych linii w kolejności alfabetycznej, co nie jest specjalnie użyteczne. Można też znaleźć na mapie tramwaj konkretnej linii i wziąć kolejno poukładane przystanki z danych o jego trasie. Stwierdziłem jednak, że prościej będzie wyciągnąć trasy z rozkładów opublikowanych na stronie MPK.</p>
-<p><em><a href="https://github.com/aczepielik/KRKtram/blob/master/db-download.R">Skrypt pobierający dane o przystankachz TTSS i MPK</a></em></p>
+<p><em><a href="https://github.com/aczepielik/KRKtram/blob/master/db-download.R">Skrypt pobierający dane o przystankach z TTSS i MPK</a>. <a href="https://github.com/aczepielik/KRKtram/tree/master/data-bases">Gotowe dane</a> (ważne, bo trasy tramwajów zdążyły się zmienić od czasu publikacji)</em></p>
 Do pobierania danych używałem pakietów <code>httr</code> i <code>rvest</code>. Przydatne były też: <code>jsonlite</code> - do zamiany plików *.json na obiekty R, <code>readr</code> - do zapisywania i odczytywania pobranych danych, oraz niezastąpiony SelectorGadget.
 </div>
 <div id="jak-zdefiniowac-spoznienie" class="section level2">
@@ -5227,6 +5227,16 @@ qdo(qgam_model_50B, fun = summary) #hidden because of lenght</code></pre>
 
 
         
+          <div class="blog-tags">
+            
+              <a href="//tags/tramwaje/">tramwaje</a>&nbsp;
+            
+              <a href="//tags/regresja-kwantylowa/">regresja kwantylowa</a>&nbsp;
+            
+              <a href="//tags/krak%C3%B3w/">Kraków</a>&nbsp;
+            
+          </div>
+        
 
         
             <hr/>
@@ -5322,6 +5332,29 @@ qdo(qgam_model_50B, fun = summary) #hidden because of lenght</code></pre>
 
 
       
+        
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "aczepielik-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
         
         
       
