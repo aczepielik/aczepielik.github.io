@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on adam::blog</title>
+    <link>/en/post/</link>
+    <description>Recent content in Posts on adam::blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
+    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/en/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tram delays in Kraków</title>
+      <link>/en/post/kraktram.en/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>/en/post/kraktram.en/</guid>
+      <description>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
+The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</description>
+    </item>
+    
+  </channel>
+</rss>

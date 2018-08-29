@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Tram delays in Kraków</title>
+  <meta property="og:title" content="Tram delays in Kraków" />
+  <meta name="twitter:title" content="Tram delays in Kraków" />
+  <meta name="description" content="When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
+The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.">
+  <meta property="og:description" content="When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
+The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.">
+  <meta name="twitter:description" content="When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of …">
+  <meta name="author" content="Adam Czepielik"/>
+  <meta property="og:image" content="/img/logo_black_light.png" />
+  <meta name="twitter:image" content="/img/logo_black_light.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="/en/post/kraktram.en/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="adam::blog" />
+
+  <meta name="generator" content="Hugo 0.40.1" />
+  <link rel="canonical" href="../../../en/post/kraktram.en/" />
+  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="adam::blog">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../../css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="../../../css/syntax.css" /><link rel="stylesheet" href="../../../css/codeblock.css" />
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../../en/">adam::blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="../../../en/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About me" href="../../../en/page/about/">About me</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="../../../pl" lang="pl">pl</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="adam::blog" href="../../../en/">
+            <img class="avatar-img" src="../../../img/logo_black_light.png" alt="adam::blog" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Tram delays in Kraków</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on 2018-08-29
+  
+  
+  &nbsp;&bull;&nbsp; Other languages: <a href="../../../post/kraktram/" lang="pl">pl</a>
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.</p>
+<p>The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</p>
+<p>One important remark: collected data correspond to holiday timetable and are not representative for the ordinary one.</p>
+<div id="distribution" class="section level1">
+<h1>Distribution</h1>
+<p>Let us start with the distribution of delays.</p>
+<p><img src="../../../post/kraktram.en_files/figure-html/delay-histogram-1.png" width="95%" /></p>
+<p>A pessimist could say that more than half of the trams depart late. An optimist, on the other hand, that the vast majority of delays small ones, up to 2 minutes and 1 minute delays are negligible because the round-off error equals 1 minute. Anyway, the average lateness in the sample equals one minute and 0.3 seconds, and the standard deviation is one minute and 23 seconds (1.39 minutes). This distribution can not be easily identified with any of the well-known distributions from textbooks, regardless of whether we treat lateness as a discrete variable or as a continuous but fraught with rounding errors.</p>
+</div>
+<div id="maps" class="section level1">
+<h1>Maps</h1>
+<p>Two interactive maps below show mean delays on stops and delay changes between them.</p>
+<iframe src="../kraktram.en_files/stop_map.en.html" height="400" width="100%" allowfullscreen="true">
+</iframe>
+<p>The mean delay on a particular stops almost always summarizes delays on different paths with this stop in a middle. Those different paths (at least two opposite directions) can differ, sometimes strongly, from each other with respect to average delay. Therefore, I specify mean delay on each path in pop-ups. As system measures departures, not arrivals, there are missing values near loops (NA for names, NaN for values).</p>
+<iframe src="../kraktram.en_files/routes_map.en.html" allowfullscreen="true" height="400" width="100%">
+</iframe>
+<div id="one-observation-from-the-second-map" class="section level2">
+<h2>One observation from the second map</h2>
+<p>Does it appear to you that intensive-red segments (big delay increase) tend to lie next to intensive-blue (big decrease)? Yes, they are! The graph below shows mean delay change after a given stop against the change before it.</p>
+<p><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-3-1.png" width="70%" /></p>
+<p>Imagine that some tram has no delay at a given stop (let say: stop 0). At the consecutive stop (stop 1) it has 2 minutes delay and at the next one (stop 2), one minute. From a stop 1 perspective there have been 2 minute increment before it and -1 minute increment (reduction) after. Such scenario will be plotted at the point (2, -1) in this coordinate system.</p>
+<p>So as you can see, trams usually reduce big delay increments (not fully however) just after they occur.</p>
+</div>
+</div>
+<div id="sample-line-delay-quantiles" class="section level1">
+<h1>Sample line delay quantiles</h1>
+<p>Let’s take a closer look at delays on a specific line. Delays rounded to integers were causing underperformance of models so I’ve decided to simulate continuity be jittering9adding uniform noise).</p>
+<pre class="r"><code>df52 &lt;- dplyr::filter(report, number == 52, direction == &#39;Os.Piastów&#39;)
+df52$delay &lt;- jitter(as.numeric(df52$delay), amount = 0.5)
+df52$delay[df52$delay &lt; 0] &lt;- 0</code></pre>
+<pre class="r"><code>df52b &lt;- dplyr::filter(report, number == 52, direction == &#39;Czerwone Maki P+R&#39;)
+df52b$delay &lt;- jitter(as.numeric(df52b$delay), amount = 0.5)
+df52b$delay[df52b$delay &lt; 0] &lt;- 0</code></pre>
+<p>I’ve been using additive quantile regression models and that for two reason. Firstly, they are distribution agnostic (upto computational aspects) which is a great advantage in our case. Secondly they offer very nice interpretation from a passenger point of view. Suppose someone in hurry who can not tolerate delay greater then 3 minutes on her stop. Quantile model offers estimation of her success or failure probabilities. Information that mean delay on this stop at certain hour equals 2.5 minute would not be valuable in such a scenario.</p>
+<p>Here are graphs showing delay quantiles of line 52.</p>
+<pre class="r"><code>qgam_model_A &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_A, fun = summary)
+
+qgam_model_B &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_B, fun = summary)</code></pre>
+<p><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-4-1.png" width="95%" /><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-4-2.png" width="95%" /></p>
+<p>Let’s take a look, for example, for the Grota-Roweckiego stop on second plot (5th from the end). The bolded line, corresponding to median is at the height of about 1 minute 40 seconds. It means that half of delays is smaller than that. Line corresponding to 80% is at the height of around 3 minutes. So you have about 80% chances that your delay at Grota-Roweckiego will be less than 80%, and so on.</p>
+<p>We can also see how the delay varies at time. The plot below shows the median delay on Dworzec Główny (Main Railway Station) in Os. Piastów direction (upper plot above).</p>
+<p><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-5-1.png" width="95%" /></p>
+<p>The more interesting thing is to see how do peaks and valleys of delay along a day change from one stop to another. It is shown on graphs below. Because differences in delays are greater between stops than between hours, values of median delay are all scaled to [0, 1] within each stop. It is like taking only colors from the plot above and not looking at the height of the curve.</p>
+<p><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-6-1.png" width="95%" /><img src="../../../post/kraktram.en_files/figure-html/unnamed-chunk-6-2.png" width="95%" /></p>
+<p>In both directions a different peak (afternoon and morning respectively) is dominant. The second is present but only at the fragment between Czerwone Maki P+R loop and surroundings of Main Railway Station (Dworzec Główny). One may think that this kind of symmetry (even if distorted) is something to be expected but actually it rarely happen on different lines. It would be interesting to compare those data with passenger flow.</p>
+</div>
+
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <ul class="list-inline footer-links">
+                
+
+
+<li>
+    <a href="//twitter.com/share?url=%2fen%2fpost%2fkraktram.en%2f&amp;text=Tram%20delays%20in%20Krak%c3%b3w&amp;via="
+       target="_blank" alt="" title="Share on Twitter">
+        <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//plus.google.com/share?url=%2fen%2fpost%2fkraktram.en%2f" target="_blank" title="Share on Google Plus">
+         <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//www.facebook.com/sharer/sharer.php?u=%2fen%2fpost%2fkraktram.en%2f" target="_blank" title="Share on Facebook">
+        <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//reddit.com/submit?url=%2fen%2fpost%2fkraktram.en%2f&amp;title=Tram%20delays%20in%20Krak%c3%b3w" target="_blank" title="Share on Reddit">
+         <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-reddit fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//www.linkedin.com/shareArticle?url=%2fen%2fpost%2fkraktram.en%2f&amp;title=Tram%20delays%20in%20Krak%c3%b3w" target="_blank"
+       title="Share on LinkedIn">
+         <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//www.stumbleupon.com/submit?url=%2fen%2fpost%2fkraktram.en%2f&amp;title=Tram%20delays%20in%20Krak%c3%b3w" target="_blank"
+       title="Share on StumbleUpon">
+        <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-stumbleupon fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+
+<li>
+    <a href="//www.pinterest.com/pin/create/button/?url=%2fen%2fpost%2fkraktram.en%2f&amp;description=Tram%20delays%20in%20Krak%c3%b3w" target="_blank"
+       title="Share on Pinterest">
+         <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+    </a>
+</li>
+
+              </ul>
+            </section>
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:adam.czepielik@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/aczepielik" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/adam-czepielik-826477130" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="../../../index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Adam Czepielik
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="../../../en/">adam::blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.40.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+        <p class="credits theme-by text-muted">  Logo adapted from free vector art via <a target="_blank" href="https://www.Vecteezy.com/">www.Vecteezy.com</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../../../js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="../../../js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

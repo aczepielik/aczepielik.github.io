@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>adam::blog</title>
+    <link>/</link>
+    <description>Recent content on adam::blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
+    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spóźnienia krakowskich tramwajów</title>
+      <link>/post/kraktram/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>/post/kraktram/</guid>
+      <description>Od pewnego czasu na stronie ttss.krakow.pl możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (Traffic Tram Supervision System), na ttss.krakow.pl/internetservice/. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił pro publico bono znacznie wygodniejszą wersję mapki (https://mpk.</description>
+    </item>
+    
+    <item>
+      <title>Adam Czepielik</title>
+      <link>/page/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>/page/about/</guid>
+      <description> Jestem studentem matematyki na Uniwersytecie Jagiellońskim oraz miłośnikiem analizowania danych statystycznych. Mając w pamięci, jak dużo nauczyłem się z poradników i analiz dostępnych na wielu blogach, postanowiłem i ja zacząć publikować owoce swojej pracy. CV Wykształcenie           Semestr zimowy 2018&amp;frasl;19 KU Leuven (Belgia) Stypendium Erasmus+   Od X 2017 Uniwersytet Jagielloński Studia magisterskie z matematyki Praca magisterska o klastrowaniu danych jakościowych przy użyciu analizy korespondencji (w trakcie) Członek Koła Naukowego Matematyki Finansowej   2014 - 2017 Uniwersytet Jagielloński Studia licencjackie z matematyki  Praca licencjacka o konstruowaniu miar produktowych bez założenia sigma-skończnoności przestrzeni (pdf)     Dodatkowe kursy          Data Camp Data Scientist with R  Machine Learning with R   Pelikan  (Warsztaty organizowane przez UJ)  Wprowadzenie do R  Podstawy uczenia maszynowego w Pythonie  Microsoft SQL Server Analysis Services    Instytut Filologii Klasycznej UJ Praktyczna nauka języka starogreckiego, dwa semestry (kurs dla studentów pierwszego roku)    </description>
+    </item>
+    
+  </channel>
+</rss>

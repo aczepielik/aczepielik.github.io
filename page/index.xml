@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on adam::blog</title>
+    <link>/page/</link>
+    <description>Recent content in Pages on adam::blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
+    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
+    
+	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adam Czepielik</title>
+      <link>/page/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>/page/about/</guid>
+      <description> Jestem studentem matematyki na Uniwersytecie Jagiellońskim oraz miłośnikiem analizowania danych statystycznych. Mając w pamięci, jak dużo nauczyłem się z poradników i analiz dostępnych na wielu blogach, postanowiłem i ja zacząć publikować owoce swojej pracy. CV Wykształcenie           Semestr zimowy 2018&amp;frasl;19 KU Leuven (Belgia) Stypendium Erasmus+   Od X 2017 Uniwersytet Jagielloński Studia magisterskie z matematyki Praca magisterska o klastrowaniu danych jakościowych przy użyciu analizy korespondencji (w trakcie) Członek Koła Naukowego Matematyki Finansowej   2014 - 2017 Uniwersytet Jagielloński Studia licencjackie z matematyki  Praca licencjacka o konstruowaniu miar produktowych bez założenia sigma-skończnoności przestrzeni (pdf)     Dodatkowe kursy          Data Camp Data Scientist with R  Machine Learning with R   Pelikan  (Warsztaty organizowane przez UJ)  Wprowadzenie do R  Podstawy uczenia maszynowego w Pythonie  Microsoft SQL Server Analysis Services    Instytut Filologii Klasycznej UJ Praktyczna nauka języka starogreckiego, dwa semestry (kurs dla studentów pierwszego roku)    </description>
+    </item>
+    
+  </channel>
+</rss>
