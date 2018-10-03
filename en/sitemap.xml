@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/en/post/smog-and-transport/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/en/post/kraktram.en/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -19,7 +24,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
@@ -47,6 +52,12 @@
   </url>
   
   <url>
+    <loc>/en/tags/arimax/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/en/categories/</loc>
     <priority>0</priority>
     <xhtml:link
@@ -63,7 +74,7 @@
   
   <url>
     <loc>/en/tags/krak%C3%B3w/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -79,7 +90,7 @@
   
   <url>
     <loc>/en/tags/local/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -100,7 +111,7 @@
   
   <url>
     <loc>/en/post/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -121,8 +132,14 @@
   </url>
   
   <url>
+    <loc>/en/tags/smog/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/en/tags/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
