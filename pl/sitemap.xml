@@ -3,6 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="/"
+                />
+  </url>
+  
+  <url>
+    <loc>/tags/krak%C3%B3w/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/krak%C3%B3w/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="/tags/krak%C3%B3w/"
+                />
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>/tags/regresja-kwantylowa/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/kraktram/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -18,18 +69,23 @@
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/tags/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/"
+                href="/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="/"
+                href="/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>/tags/tramwaje/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -48,7 +104,6 @@
   
   <url>
     <loc>/categories/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -62,24 +117,7 @@
   </url>
   
   <url>
-    <loc>/tags/krak%C3%B3w/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/krak%C3%B3w/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="/tags/krak%C3%B3w/"
-                />
-  </url>
-  
-  <url>
     <loc>/page/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -90,50 +128,6 @@
                 hreflang="pl"
                 href="/page/"
                 />
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>/tags/regresja-kwantylowa/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>/tags/tramwaje/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

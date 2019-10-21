@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Regresja Kwantylowa on adam::blog</title>
+    <title>regresja kwantylowa on adam::blog</title>
     <link>/tags/regresja-kwantylowa/</link>
-    <description>Recent content in Regresja Kwantylowa on adam::blog</description>
+    <description>Recent content in regresja kwantylowa on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
