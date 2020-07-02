@@ -1,0 +1,5509 @@
+<!DOCTYPE html>
+<html lang="pl" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Spóźnienia krakowskich tramwajów - adam::blog</title>
+  <meta name="description" content="Jakie są szanse, że tramwaj przyjedzie punktualnie? Gdzie występują największe spóźnienia? Jak zależą one od pory dnia? Które linie spóźniają się najbardziej i czy kierunek ma tu znaczenie? Czy tramwaje potrafią nadrobić złapane spóźnienie?">
+  <meta name="author" content="Adam Czepielik"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "adam::blog",
+    
+    "url": "\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "\/post\/sp%C3%B3%C5%BAnienia-krakowskich-tramwaj%C3%B3w\/",
+          "name": "Spóźnienia krakowskich tramwajów"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Adam Czepielik"
+  },
+  "headline": "Spóźnienia krakowskich tramwajów",
+  "description" : "Jakie są szanse, że tramwaj przyjedzie punktualnie? Gdzie występują największe spóźnienia? Jak zależą one od pory dnia? Które linie spóźniają się najbardziej i czy kierunek ma tu znaczenie? Czy tramwaje potrafią nadrobić złapane spóźnienie?",
+  "inLanguage" : "pl",
+  "wordCount":  7848 ,
+  "datePublished" : "2018-08-29T00:00:00",
+  "dateModified" : "2018-08-29T00:00:00",
+  "image" : "\/img\/logo_black_light.png",
+  "keywords" : [ "tramwaje, regresja kwantylowa, Kraków" ],
+  "mainEntityOfPage" : "\/post\/sp%C3%B3%C5%BAnienia-krakowskich-tramwaj%C3%B3w\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "\/img\/logo_black_light.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Spóźnienia krakowskich tramwajów" />
+<meta property="og:description" content="Jakie są szanse, że tramwaj przyjedzie punktualnie? Gdzie występują największe spóźnienia? Jak zależą one od pory dnia? Które linie spóźniają się najbardziej i czy kierunek ma tu znaczenie? Czy tramwaje potrafią nadrobić złapane spóźnienie?">
+<meta property="og:image" content="/img/logo_black_light.png" />
+<meta property="og:url" content="/post/sp%C3%B3%C5%BAnienia-krakowskich-tramwaj%C3%B3w/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="adam::blog" />
+
+  <meta name="twitter:title" content="Spóźnienia krakowskich tramwajów" />
+  <meta name="twitter:description" content="Jakie są szanse, że tramwaj przyjedzie punktualnie? Gdzie występują największe spóźnienia? Jak zależą one od pory dnia? Które linie spóźniają się najbardziej i czy kierunek ma tu znaczenie? Czy …">
+  <meta name="twitter:image" content="/img/logo_black_light.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="adam::blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="../../css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="../../css/syntax.css" /><link rel="stylesheet" href="../../css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Nawigacja</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../">adam::blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="../../">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="O mnie" href="../../page/about/">O mnie</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="../../en" lang="en">en</a>
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="adam::blog" href="../../">
+            <img class="avatar-img" src="../../img/logo_black_light.png" alt="adam::blog" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Spóźnienia krakowskich tramwajów</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Opublikowany 2018-08-29
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Adam Czepielik
+    
+  
+  &nbsp;&bull;&nbsp;Inne języki: <a href="../../en/post/kraktram.en/" lang="en">en</a>
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+<script src="../../rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Od pewnego czasu na stronie <a href="http://www.ttss.krakow.pl/">ttss.krakow.pl</a> możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (<em>Traffic Tram Supervision System</em>), na <a href="http://www.ttss.krakow.pl/internetservice/">ttss.krakow.pl/internetservice/</a>. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił <em>pro publico bono</em> znacznie wygodniejszą wersję mapki (<a href="https://mpk.jacekk.net" class="uri">https://mpk.jacekk.net</a>). Od tego czasu powstało też kilka innych stron i aplikacji oferujących dostęp do serwisu. Natomiast ja postanowiłem pobrać z niego trochę danych i na ich podstawie przeanalizować, jak się spóźniają krakowskie tramwaje.</p>
+<div style="background-color: #e2e2e2; padding: 10px; margin: 5px 10px;">
+<p><em>Fragmenty z szarym tłem będą poświęcone bardziej technicznym tematom.</em></p>
+<em>Żeby wpis był czytelniejszy pomijam fragmenty kodu przy wykresach i obróbce danych. Całość można znaleźć na GitHubie, pod tym <a href="https://github.com/aczepielik/KRKtram/blob/master/analysis.Rmd">linkiem</a></em>
+</div>
+<ul>
+<li>
+<a href="#pobieranie-i-czyszczenie-danych">Pobieranie i czyszczenie danych</a>
+<ul>
+<li>
+<a href="#jak-zdefiniowac-spoznienie">Jak zdefiniować spóźnienie?</a>
+</li>
+<li>
+<a href="#czas-badania">Czas badania</a>
+</li>
+<li>
+<a href="#czyszczenie-i-braki-danych">Czyszczenie i braki danych</a>
+<ul>
+<li>
+<a href="#niemiarodajne-dane-z-powodu-zmian-trasy-i-zatrzyman">Niemiarodajne dane z powodu zmian trasy i zatrzymań</a>
+</li>
+<li>
+<a href="#brak-poaczenia-z-ttss">Brak połączenia z TTSS</a>
+</li>
+<li>
+<a href="#bedy-systemu">Błędy systemu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#pierwsze-wrazenia">Pierwsze wrażenia</a>
+<ul>
+<li>
+<a href="#rozkad-spoznien">Rozkład spóźnień</a>
+</li>
+<li>
+<a href="#spoznienia-w-czasie">Spóźnienia w czasie</a>
+</li>
+<li>
+<a href="#rankingi-spoznien">Rankingi spóźnień</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#mapy">Mapy</a>
+<ul>
+<li>
+<a href="#wnioski-z-map">Wnioski</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#analiza-pojedynczych-linii">Analiza pojedynczych linii</a>
+<ul>
+<li>
+<a href="#regresja-kwantylowa">Regresja kwantylowa dla linii 52</a>
+</li>
+<li>
+<a href="#pozostae-linie">Pozostałe linie</a>
+</ul>
+</li>
+</ul>
+<div style="border: 3px solid #316675; margin: 5px; padding: 10px">
+Za długie? Zobacz <a href="../../en/post/kraktram.en/">streszczenie (eng)</a>
+</div>
+<div id="pobieranie-i-czyszczenie-danych" class="section level1">
+<h1>Pobieranie i czyszczenie danych</h1>
+<div style="background-color: #e2e2e2; padding: 10px; margin: 5px 10px;">
+<h2 id="api">API</h2>
+<p>Pójdźmy jeszcze bardziej wgłąb strony TTSS. Uruchamiając w przeglądarce narzędzia deweloperskie, można sprawdzić jak działa API serwisu. Najważniejsze ścieżki udostępniają:</p>
+<ul>
+<li><code>geoserviceDispatcher/services/vehicleinfo/vehicles</code>: dane o pojazdach i ich położeniach oraz numer przejazdu, który realizują.</li>
+<li><code>services/routeInfo/routeStops?routeId=ID</code>: numery i nazwy przystanków na trasie o podanym ID, w kolejności alfabetycznej.</li>
+<li><code>services/tripInfo/tripPassages?tripId=tID&amp;vehicleId=vID</code>: trasa i przewidywane czasy przyjazdu tramwaju o podanym vID, realizującego przejazd tID.</li>
+<li><code>geoserviceDispatcher/services/stopinfo/stops?left=-648000000&amp;bottom=-324000000&amp;right=648000000&amp;top=324000000</code>: numery, nazwy i położenia przystanków.</li>
+<li><code>services/passageInfo/stopPassages/stop?stop=ID</code>: informacje o spodziewanych i niedawnych odjazdach z przystanku o podanym ID.</li>
+</ul>
+<p>I tak na przykład odpytując adres <a href="http://www.ttss.krakow.pl/internetservice/services/passageInfo/stopPassages/stop?stop=77" class="uri">http://www.ttss.krakow.pl/internetservice/services/passageInfo/stopPassages/stop?stop=77</a> dostaniemy dane o odjazdach z Teatru Bagatela. Numery Id przystanków można wziąć ze <code>stopinfo</code>, więc żeby zbadać spóźnienia, nie pozostaje nic innego jak sprawdzać wszystkie przystanki po kolei. Trzeba tylko uważać na drobne różnice w formatach odpowiedzi.</p>
+<p>Takie sprawdzanie wszystkich przystanków trochę trwa. Na moim komputerze jedna runda zapytań o wszystkie przystanki trwała nieco ponad 20 sekund. Teoretycznie można by to zrobić o wiele szybciej: pobrać położenia wszystkich tramwajów (jeden plik), sprawdzić czy znajdują się w pobliżu przystanków i porównać z rozkładami jazdy. Niestety skojarzenie konkretnego pojazdu z rozkładem nie byłoby proste, biorąc pod uwagę, że niektóre z nich nie są podłączone do TTSS.</p>
+<p><em>Skrypt do pobierania danych z przystanków można znaleźć pod tym <a href="https://github.com/aczepielik/KRKtram/blob/master/report_generator.R">linkiem</a>. Funkcje z których korzysta skrypt, <a href="https://github.com/aczepielik/KRKtram/blob/master/report_funs.R">tutaj</a>. Pobrane i wyczyszczone dane <a href="https://github.com/aczepielik/KRKtram/tree/master/reports">tu</a>.</em></p>
+<p>Strona TTSS pokazuje przystanki poszczególnych linii w kolejności alfabetycznej, co nie jest specjalnie użyteczne. Można też znaleźć na mapie tramwaj konkretnej linii i wziąć kolejno poukładane przystanki z danych o jego trasie. Stwierdziłem jednak, że prościej będzie wyciągnąć trasy z rozkładów opublikowanych na stronie MPK.</p>
+<p><em><a href="https://github.com/aczepielik/KRKtram/blob/master/db-download.R">Skrypt pobierający dane o przystankach z TTSS i MPK</a>. <a href="https://github.com/aczepielik/KRKtram/tree/master/data-bases">Gotowe dane</a> (ważne, bo trasy tramwajów zdążyły się zmienić od czasu publikacji)</em></p>
+Do pobierania danych używałem pakietów <code>httr</code> i <code>rvest</code>. Przydatne były też: <code>jsonlite</code> - do zamiany plików *.json na obiekty R, <code>readr</code> - do zapisywania i odczytywania pobranych danych, oraz niezastąpiony SelectorGadget.
+</div>
+<div id="jak-zdefiniowac-spoznienie" class="section level2">
+<h2>Jak zdefiniować spóźnienie?</h2>
+<p>Nic trudnego, zdawałoby się. Jeżeli tramwaj miał przyjechać o 8:02, a przyjechał o 8:06, to zapisujemy 4 minuty spóźnienia. Problem pojawia się jeżeli tramwaj nie przyjechał. Jeżeli po 10 minutach przyjechał następny, to być może powinniśmy zapisać 10 minut spóźnienia. Co jednak zrobić jeśli ostatecznie przyjedzie on na przystanek, ale po 12 minutach. Taka sytuacja może się zdarzyć jeśli spóźnienie wynika z nadzwyczajnej zmiany trasy. Może więc 12 minut? Czekających pasażerów, można by odpowiedzieć, niespecjalnie interesuje jednak co się stało już po odjeździe kolejnego tramwaju. Ale z drugiej strony, jeżeli taka sytuacja zdarzy się w miejscu, gdzie wszystkie linie jadące w danym kierunku mają tą samą trasę (np. niedaleko pętli), to ci pasażerowie mogli wsiąść w tramwaj innej linii i czekać mniej niż 10 minut, więc to też nie jest najlepsze kryterium.</p>
+<p>Z pewną pomocą przychodzi TTSS, w którym kursy anulowane znikają (choć nie zawsze) z tablic oczekiwanych przyjazdów. Na przykład w środę 25.07 odbywał się remont przy tunelu pod Dworcem Głównym. Jadące tam linie miały zmienione trasy i informacje na temat ich odjazdów pojawiały się tylko na tych ich częściach, które zmieniane nie były. Żeby zachować spójność z systemem z którego korzystam przyjąłem następującą procedurę określania spóźnienia:</p>
+<ol style="list-style-type: decimal">
+<li>Jeżeli tramwaj przestał być śledzony przez system, to kurs jest traktowany tak jakby w ogóle nie był planowany.</li>
+<li>Jeżeli tramwaj zostanie odnotowany na przystanku, to spóźnienie jest liczone jest liczone jako różnica między rzeczywistym, a planowanym czasem przyjazdu. Przy czym jako rzeczywisty czas przyjazdu będę rozumiał albo czas zapytania w którym system pokazał, że tramwaj zatrzymuje się na przystanku, albo czas ostatniego zapytania, gdy przyjazd był jeszcze oczekiwany. Na informacjach o tym, że tramwaj się zatrzymuje nie można do końca polegać.</li>
+<li>Jeżeli tak wyliczone spóźnienie jest duże, to sprawdzam w komunikatach publikowanych przez MPK, czy da się je powiązać z jakąś awarią. Jeżeli okaże się, że takie spóźnienie wynika ze zbyt późnego „anulowania kursu” (co miało miejsce na przykład przy tymczasowym skróceniu linii 6 i 24 do Prokocimia), to usuwam takie obserwacje ręcznie.</li>
+</ol>
+</div>
+<div id="czas-badania" class="section level2">
+<h2>Czas badania</h2>
+<p>Dane zbierałem od wtorku 24.07 do wtorku 31.07, z pominięciem weekendu. Był to pierwszy tydzień obwiązywania poprawionego rozkładu jazdy, po zakończeniu remontu na Bieńczyckiej.</p>
+<p>W weekend odbyła się naprawa szyn w okolicach skrzyżowania ulic Nowosądeckiej i Spółdzielców. Po naprawie średnie opóźnienia obniżyły się, a istotne różnice w rozkładach spóźnień występowały na przystankach Piaski Nowe i Nowosądecka, dla tramwajów jadących do Kurdwanowa, oraz od Witosa aż do Podgórze SKA, dla tych jadących w drugą stronę. Przynajmniej część z tych różnic trudno powiązać bezpośrednio z remontem, bo pojawiają się na kilka przystanków przed naprawianym odcinkiem. <strong>Tak czy owak, wyniki dla okolic pętli Kurdwanów P+R oraz dla początkowych odcinków linii 6 i 24 kursujących z tej pętli, mogą być z powodu remontu niemiarodajne.</strong></p>
+<p><details><summary> Szczegóły ▼ </summary></p>
+<p>Rozkład spóźnień traktuję tutaj jako dyskretny i badam zgodność testem chi-kwadrat. Pierwszy test dotyczy tramwajów jadących w stronę pętli Kurdwanów P+R, a drugi - wyjeżdżających z tej pętli.</p>
+<pre class="r"><code>repair_test &lt;- function(x){
+print(x)
+
+#select departures to Kurdwanów
+to &lt;- report %&gt;% filter(stopName == x &amp; direction == &#39;Kurdwanów P+R&#39;) %&gt;% select(delay, plannedTime) %&gt;% mutate(repair = day(plannedTime)&gt;=30, delay = as.factor(delay)) %&gt;% select(-plannedTime)
+
+#determine which levels of delays should be merged to meet chi square test assumptions
+drop &lt;- to %&gt;% group_by(repair) %&gt;% count(delay) %&gt;% filter(n &gt;= 5) %&gt;% arrange(n) %&gt;% summarize(threshold = first(delay)) %&gt;% `$`(threshold) %&gt;% as.character() %&gt;% as.numeric() %&gt;% min()
+
+#merge levels
+to$delay &lt;- fct_lump(to$delay, n = drop, other_level = &#39;bigger&#39;)
+
+#test
+table(to) %&gt;% chisq.test() %&gt;% print()
+
+from &lt;- report %&gt;% filter(number %in% c(6, 24) &amp; stopName == x &amp; direction != &#39;Kurdwanów P+R&#39;) %&gt;% select(delay, plannedTime) %&gt;% mutate(repair = day(plannedTime)&gt;=30, delay = as.factor(delay)) %&gt;% select(-plannedTime)
+
+drop &lt;- from %&gt;% group_by(repair) %&gt;% count(delay) %&gt;% filter(n &gt;= 5) %&gt;% arrange(n) %&gt;% summarize(threshold = first(delay)) %&gt;% `$`(threshold) %&gt;% as.character() %&gt;% as.numeric() %&gt;% min()
+
+from$delay &lt;- fct_lump(from$delay, n = drop, other_level = &#39;bigger&#39;)
+
+table(from) %&gt;% chisq.test() %&gt;% print()
+}
+
+purrr::walk(c(&quot;Witosa&quot;, &quot;Nowosądecka&quot;, &quot;Piaski Nowe&quot;, &quot;Dauna&quot;, &quot;Bieżanowska&quot;, &quot;Kabel&quot;, &quot;Dworcowa&quot;, &quot;Cmentarz Podgórski&quot;, &quot;Podgórze SKA&quot;, &quot;Limanowskiego&quot;), repair_test)</code></pre>
+<pre><code>## [1] &quot;Witosa&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 12.435, df = 6, p-value = 0.05295
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 6.9135, df = 2, p-value = 0.03153
+## 
+## [1] &quot;Nowosądecka&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 12.803, df = 5, p-value = 0.02529
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 10.589, df = 3, p-value = 0.01417
+## 
+## [1] &quot;Piaski Nowe&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 12.371, df = 6, p-value = 0.05419
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 9.1451, df = 3, p-value = 0.02742
+## 
+## [1] &quot;Dauna&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 9.2774, df = 6, p-value = 0.1586
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 10.592, df = 3, p-value = 0.01415
+## 
+## [1] &quot;Bieżanowska&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 10.293, df = 5, p-value = 0.06734
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 15.393, df = 3, p-value = 0.00151
+## 
+## [1] &quot;Kabel&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 11.917, df = 7, p-value = 0.1033
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 8.8538, df = 4, p-value = 0.06486
+## 
+## [1] &quot;Dworcowa&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 13.434, df = 5, p-value = 0.01963
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 14.169, df = 5, p-value = 0.01457
+## 
+## [1] &quot;Cmentarz Podgórski&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 11.296, df = 8, p-value = 0.1855
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 17.803, df = 4, p-value = 0.001349
+## 
+## [1] &quot;Podgórze SKA&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 11.187, df = 5, p-value = 0.0478
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 12.338, df = 5, p-value = 0.03043
+## 
+## [1] &quot;Limanowskiego&quot;
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 0.84645, df = 3, p-value = 0.8383
+## 
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  .
+## X-squared = 2.0559, df = 4, p-value = 0.7255</code></pre>
+<p></details></p>
+<p><strong>Poza tym, wyników analizy nie należy stosować poza wakacyjny rozkład jazdy.</strong></p>
+</div>
+<div id="czyszczenie-i-braki-danych" class="section level2">
+<h2>Czyszczenie i braki danych</h2>
+<p>Z pobranych danych trzeba było wyrzucić te błędne i niemiarodajne:</p>
+<div id="niemiarodajne-dane-z-powodu-zmian-trasy-i-zatrzyman" class="section level3">
+<h3>Niemiarodajne dane z powodu zmian trasy i zatrzymań</h3>
+<p>We wtorek 24.07 linie 24 i 6 były przez jakiś czas kierowane do pętli w Prokocimiu, zamiast do Kurdwanowa. Mimo to były pokazywane jako oczekiwane na swojej zwyczajnej trasie, co zasktutkowało zanotowanie ponad godzinnych spóźnień, zanim nierealizowane przyjazdy zostały usunięte z systemu. Te dane usunąłem ręcznie.</p>
+<p>W środę 25.07 odbywał się remont tunelu pod Dworcem Głównym i jadące tamtędy linie zostały skierowane na objazdy. TTSS mierzył czasy odjazdów tylko na czynnych fragmentach zwyczajnej trasy. Na linii 50 objazd powodował znaczne spóźnienia, tak że pomiary na przystankach odwiedzanych po zakończeniu objazdu były niemiarodajnie duże. Te dane również usunąłem.</p>
+<p>We wtorek 31.07 miało miejsce zatrzymanie przy rondzie Mogilskim, które przez długi czas wpływało na ruch na kilku liniach. Ponieważ było to jedyne zatrzymanie tego typu usuwałem dane o kursach, które ucierpiały z jego powodu</p>
+<p>Mniejsze, kilkuminutowe zatrzymania pozostawiałem bez zmian, uznając je za coś, co po prostu czasem się zdarza.</p>
+</div>
+<div id="brak-poaczenia-z-ttss" class="section level3">
+<h3>Brak połączenia z TTSS</h3>
+<p>Niektóre tramwaje nie są wyposażone w sprzęt umożliwiający ich śledzenie, a te które mają czasami tracą połączenie z systemem. W takich sytuacjach TTSS wciąż nadaje kursowi numer Id, ale pokazuje tylko czas rozkładowy. Odjazdów z przystanków, które zaplanowano, ale które nie zostały zarejestrowane z powodu braku sprzętu lub tego, że nie działał było w sumie 12%, choć na niektórych liniach sporo więcej.</p>
+<p><img src="../../post/kraktram_files/figure-html/gps%20general%20proportion-1.png" width="95%" /></p>
+<p>Poniższy wykres przedstawia dane o liniach, na których odsetek odjazdów niezarejestrowanych jest większy niż średnia.</p>
+<p><img src="../../post/kraktram_files/figure-html/gps%20by%20line-1.png" width="95%" /></p>
+</div>
+<div id="bedy-systemu" class="section level3">
+<h3>Błędy systemu</h3>
+<p>Typowy błąd systemu najłatwiej będzie pokazać na przykładzie. Rozwijana niżej tabela zawiera dane o przejeździe tramwaju linii 4 w kierunku Bronowic, o numerze kursu 6351558574044474122.</p>
+<details><summary><strong>Klinknij, żeby rozwinąć tabelę ▼</strong></summary>
+<table class="table" style="font-size: 13px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+index
+</th>
+<th style="text-align:right;">
+seq_num
+</th>
+<th style="text-align:left;">
+stopName
+</th>
+<th style="text-align:left;">
+time_stamp
+</th>
+<th style="text-align:left;">
+plannedTime
+</th>
+<th style="text-align:left;">
+status
+</th>
+<th style="text-align:left;">
+delay
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1681
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Wzgórza Krzesławickie
+</td>
+<td style="text-align:left;">
+2018-07-25 16:01:54
+</td>
+<td style="text-align:left;">
+2018-07-25 16:00:00
+</td>
+<td style="text-align:left;">
+PLANNED
+</td>
+<td style="text-align:left;">
+1 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1732
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Elektromontaż
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:25
+</td>
+<td style="text-align:left;">
+2018-07-25 16:05:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+18 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Struga
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:48
+</td>
+<td style="text-align:left;">
+2018-07-25 16:16:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+7 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Wiadukty
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:49
+</td>
+<td style="text-align:left;">
+2018-07-25 16:03:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+20 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Darwina
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:49
+</td>
+<td style="text-align:left;">
+2018-07-25 16:02:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+21 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Jarzębiny
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:49
+</td>
+<td style="text-align:left;">
+2018-07-25 16:01:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+22 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Kombinat
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:50
+</td>
+<td style="text-align:left;">
+2018-07-25 16:10:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+13 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1733
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Zajezdnia Nowa Huta
+</td>
+<td style="text-align:left;">
+2018-07-25 16:23:51
+</td>
+<td style="text-align:left;">
+2018-07-25 16:08:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+15 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1735
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Plac Centralny im. R.Reagana
+</td>
+<td style="text-align:left;">
+2018-07-25 16:24:38
+</td>
+<td style="text-align:left;">
+2018-07-25 16:20:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1738
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Os.Kolorowe
+</td>
+<td style="text-align:left;">
+2018-07-25 16:25:55
+</td>
+<td style="text-align:left;">
+2018-07-25 16:21:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1743
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Rondo Czyżyńskie
+</td>
+<td style="text-align:left;">
+2018-07-25 16:28:03
+</td>
+<td style="text-align:left;">
+2018-07-25 16:25:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1746
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Czyżyny
+</td>
+<td style="text-align:left;">
+2018-07-25 16:29:17
+</td>
+<td style="text-align:left;">
+2018-07-25 16:26:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1750
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Stella-Sawickiego
+</td>
+<td style="text-align:left;">
+2018-07-25 16:30:59
+</td>
+<td style="text-align:left;">
+2018-07-25 16:27:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1754
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+AWF
+</td>
+<td style="text-align:left;">
+2018-07-25 16:32:40
+</td>
+<td style="text-align:left;">
+2018-07-25 16:28:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1757
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Muzeum Lotnictwa
+</td>
+<td style="text-align:left;">
+2018-07-25 16:33:59
+</td>
+<td style="text-align:left;">
+2018-07-25 16:29:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1762
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+TAURON Arena Kraków Wieczysta
+</td>
+<td style="text-align:left;">
+2018-07-25 16:36:05
+</td>
+<td style="text-align:left;">
+2018-07-25 16:32:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1765
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Białucha
+</td>
+<td style="text-align:left;">
+2018-07-25 16:37:21
+</td>
+<td style="text-align:left;">
+2018-07-25 16:33:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1769
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Cystersów
+</td>
+<td style="text-align:left;">
+2018-07-25 16:38:59
+</td>
+<td style="text-align:left;">
+2018-07-25 16:35:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1773
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Rondo Mogilskie
+</td>
+<td style="text-align:left;">
+2018-07-25 16:40:41
+</td>
+<td style="text-align:left;">
+2018-07-25 16:37:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1779
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Lubicz
+</td>
+<td style="text-align:left;">
+2018-07-25 16:42:57
+</td>
+<td style="text-align:left;">
+2018-07-25 16:39:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1783
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Dworzec Główny
+</td>
+<td style="text-align:left;">
+2018-07-25 16:44:46
+</td>
+<td style="text-align:left;">
+2018-07-25 16:41:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1788
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Stary Kleparz
+</td>
+<td style="text-align:left;">
+2018-07-25 16:46:52
+</td>
+<td style="text-align:left;">
+2018-07-25 16:43:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1795
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Teatr Bagatela
+</td>
+<td style="text-align:left;">
+2018-07-25 16:49:54
+</td>
+<td style="text-align:left;">
+2018-07-25 16:46:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Batorego
+</td>
+<td style="text-align:left;">
+2018-07-25 16:51:59
+</td>
+<td style="text-align:left;">
+2018-07-25 16:47:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1802
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Plac Inwalidów
+</td>
+<td style="text-align:left;">
+2018-07-25 16:52:51
+</td>
+<td style="text-align:left;">
+2018-07-25 16:49:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1808
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Urzędnicza
+</td>
+<td style="text-align:left;">
+2018-07-25 16:55:21
+</td>
+<td style="text-align:left;">
+2018-07-25 16:51:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+4 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1810
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Biprostal
+</td>
+<td style="text-align:left;">
+2018-07-25 16:56:04
+</td>
+<td style="text-align:left;">
+2018-07-25 16:53:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1813
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Uniwersytet Pedagogiczny
+</td>
+<td style="text-align:left;">
+2018-07-25 16:57:26
+</td>
+<td style="text-align:left;">
+2018-07-25 16:54:00
+</td>
+<td style="text-align:left;">
+PREDICTED
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1818
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Głowackiego
+</td>
+<td style="text-align:left;">
+2018-07-25 16:59:31
+</td>
+<td style="text-align:left;">
+2018-07-25 16:56:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+3 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1821
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Bronowice
+</td>
+<td style="text-align:left;">
+2018-07-25 17:00:48
+</td>
+<td style="text-align:left;">
+2018-07-25 16:58:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+2 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1823
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Wesele
+</td>
+<td style="text-align:left;">
+2018-07-25 17:01:39
+</td>
+<td style="text-align:left;">
+2018-07-25 16:59:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+2 mins
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1827
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+Bronowice Wiadukt
+</td>
+<td style="text-align:left;">
+2018-07-25 17:03:21
+</td>
+<td style="text-align:left;">
+2018-07-25 17:01:00
+</td>
+<td style="text-align:left;">
+STOPPING
+</td>
+<td style="text-align:left;">
+2 mins
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<p>W pierwszej kolumnie są numery kolejnych rund zapytań serwera (runda obejmuje wszystkie przystanki, trwa 20 sekund). W drugiej: kolejność przystanków na trasie. W trzeciej: nazwa przystanku. W czwartej: czas wysłania zapytania do serwera (zaokrąglając do pełnych minut możemy o utożsamiać z rzeczywistym czasem, odjazdu). W piątej: planowany czas odjazdu. W szóstej: status obserwacji (PLANNED - nie śledzony, PREDICTED - oczekiwany, STOPPING - stoi na przystanku, czyli <em>&gt;&gt;&gt;</em> na tablicach),. W siódmej: wyliczone opóźnienie.</p>
+<p>Pokazany tutaj kurs nie miał na pętli połączenia z systemem. Świadczy o tym status PLANNED. Następnie, od przystanku Jarzębiny do przystanku Struga, tramwaj był oczekiwany, ale nie odnotowano żadnego odjazdu. Około 16:24 kurs został zdjęty z listy oczekiwanych na wszystkich tych przystankach niemal jednocześnie (podobne numery ostatnich zapytań, które pokazywały status PREDICTED: 1732 i 1733). Wtedy też zarejestrowano odjazd (z czterominutowym opóźnieniem) z Placu Centralnego. Dalej rejestracja kursu przebiegała bez zakłóceń.</p>
+<p>Z tego kursu usunąłem dane z pierwszych ośmiu przystanków. Przypadków takich jak ten było każdego dnia kilkadziesiąt. Czasem wystarczyło usunąć część danych, czasami cały kurs. Bywa również, że w wyniku błędów brakowało danych z niektórych przystanków.</p>
+</div>
+</div>
+</div>
+<div id="pierwsze-wrazenia" class="section level1">
+<h1>Pierwsze wrażenia</h1>
+<div id="rozkad-spoznien" class="section level2">
+<h2>Rozkład spóźnień</h2>
+<p>Oto, jak przedstawia się rozkład spóźnień:</p>
+<p><img src="../../post/kraktram_files/figure-html/delay-histogram-1.png" width="95%" /></p>
+<p>Pesymista powiedziałby, że ponad połowa tramwajów przyjeżdża opóźniona. Optymista, że zdecydowaną większość stanowią małe spóźnienia, do 2 minut. Tak czy owak średnie spóźnienie w próbie wyniosło minutę i 0.3 sekundy, a odchylenie standardowe minutę i 23 sekundy (1.39 minuty). Ten rozkład nie daje się łatwo utożsamić z żadnym z rozkładów dobrze znanych z podręczników i to niezależnie czy potraktujemy spóźnienia jako zmienną dyskretną, czy jako ciągłą lecz obarczoną błędami zaokrągleń.</p>
+</div>
+<div id="spoznienia-w-czasie" class="section level2">
+<h2>Spóźnienia w czasie</h2>
+<p>Zobaczmy jak układa się średnia opóźnienia w zależności od godziny:</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-3-1.png" width="95%" /></p>
+<p>Prawdę mówiąc spodziewałem się raczej, że będzie wyraźnie widać poranny i popołudniowy szczyt komunikacyjny. Tymczasem rano przyrost spóźnień nie jest tak dynamiczny jak po południu i kumuluje się później niż się myślałem.</p>
+<p style="background-color: #e2e2e2; padding: 10px; margin: 5px 10px;">
+Krzywa została dopasowana przy użyciu uogólnionego modelu liniowego, co jest metodologicznie śliskie, zważywszy na problemy z identyfikacją rozkładu. Lepsze byłyby metody nieparametryczne. Próbowałem tutaj użyć metody <em>loess</em>, ale brakło mi pamięci (loess wymaga O(n^2), pamięci, obserwacji w zbiorze jest ok. 400 tysięcy). Niżej będę korzystał z regresji kwantylowej.
+</p>
+</div>
+<div id="rankingi-spoznien" class="section level2">
+<h2>Rankingi spóźnień</h2>
+<p>Przystanki z największym średnim opóźnieniem:</p>
+<table class="table table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Przystanek
+</th>
+<th style="text-align:right;">
+Średnie opóźnienie
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Łagiewniki ZUS
+</td>
+<td style="text-align:right;">
+2.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Nowosądecka
+</td>
+<td style="text-align:right;">
+1.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Kabel
+</td>
+<td style="text-align:right;">
+1.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Piaski Nowe
+</td>
+<td style="text-align:right;">
+1.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Dauna
+</td>
+<td style="text-align:right;">
+1.65
+</td>
+</tr>
+</tbody>
+</table>
+<p>Wysokie miejsca zajmują jak widać przysatnki, na których wpływ na średnie spóźnienie miał remont torowiska 28 i 29 lipca. Gdyby ranking zrobić tylko dla danych z dni po remoncie przystanki Kabel i Nowosądecka wciąż byłyby w pierwszej piątce, a zamiast Dauna i Piasów Nowych pojawiłyby się Zabłocie i Muzeum Lotnictwa.</p>
+<p>Przystanki z najmniejszym średnim opóźnieniem (z pominięciem pętli):</p>
+<table class="table table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Przystanek
+</th>
+<th style="text-align:right;">
+Średnie opóźnienie
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Rakowicka
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Uniwersytet Ekonomiczny
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Kampus UJ
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Zajezdnia Nowa Huta
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Ruczaj
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+</tbody>
+</table>
+<p>Co ciekawe, przystani z obydwu rankingów znajdują się niedaleko pętli. Można się domyślać (potwierdzą to mapy poniżej), że tramwaje które dojeżdżają do pętli mają spore opóźnienia, a te które dopiero co wyjechały - małe. W rankingach znalazły się te przystanki w których jedna strona tego układu przeważa w średniej.</p>
+<p>Szczególnym przypadkiem jest przystanek Łagiewniki ZUS. Jest on położony niedaleko pętli w Borku Fałęckim i obsługuje tylko jeden tor: do Borku właśnie. Stąd nie dziwi jego pozycja na czele niechlubnego rankingu.</p>
+<p>Linie z największym średnim opóźnieniem:</p>
+<table class="table table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Numer
+</th>
+<th style="text-align:left;">
+Kierunek
+</th>
+<th style="text-align:right;">
+Średnie opóźnienie
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Walcownia
+</td>
+<td style="text-align:right;">
+1.91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Bronowice Małe
+</td>
+<td style="text-align:right;">
+1.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Borek Fałęcki
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Kopiec Wandy
+</td>
+<td style="text-align:right;">
+1.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Kurdwanów P+R
+</td>
+<td style="text-align:right;">
+1.52
+</td>
+</tr>
+</tbody>
+</table>
+<p>Linie z najmniejszym średnim opóźnieniem:</p>
+<table class="table table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Numer
+</th>
+<th style="text-align:left;">
+Kierunek
+</th>
+<th style="text-align:right;">
+Średnie opóźnienie
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Czerwone Maki P+R
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Cm. Rakowicki
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Mistrzejowice
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Salwator
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Krowodrza Górka
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+</tbody>
+</table>
+<p>Z takiego prostego zestawienia niewiele jeszcze wynika. Przyjrzyjmy się zatem wszystkim średnim spóźnieniom na wszystkich liniach.</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-4-1.png" width="95%" /></p>
+<p><details> <summary style="text-align:center;"> <strong>▼ Kliknij, żeby zobaczyć pozostałe linie ▼</strong></summary></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-5-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-5-2.png" width="95%" /> </details></p>
+<p>W rankingu najmniej spóźniających się linii wysokie miejsca zajęły krótkie linie 2 i 16. Zobaczmy, czy istnieje związek między długością linii, a średnim spóźnieniem.</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-6-1.png" width="95%" /></p>
+<p>O ile najkrótsze linie mają niewielkie średnie opóźnienia, to nie widać ogólnej, silnej zależności.</p>
+</div>
+</div>
+<div id="mapy" class="section level1">
+<h1>Mapy</h1>
+<p>Dwie interaktywne mapy poniżej zbierają informacje o średnich spóźnieniach na poszczególnych przystankach (pierwsza) i przyrostach spóźnień pomiędzy nimi (druga). Chociaż średnie ze wszystkich odjazdów pokazują ciekawe zależności, to trzeba pamiętać, że średnie opóźnienie może się mocno różnić w zależności od kierunku ruchu. Dlatego po kliknięciu na kółko przystanku można zobaczyć tabelkę ze spóźnieniami rozpisanymi według wszystkich kierunków.</p>
+<p>Przy rozpisce tras, gdy tramwaj zjeżdża do pętli, pojawia się wartość oznaczenie NA. Ponieważ mierzone są czasy odjazdów brak jest danych o ostatnich odcinkach trasy. Obserwacje są uśredniane według nazw przystanków, więc np. gdy tramwaj linii 11 przejeżdża przez dwa sąsiednie przystanki o nazwie Łagiewniki, to obydwie obserwacje spóźnień będą wliczone do jednej średniej.</p>
+<p>Dostępne są tryb pełnoekranowy i wyszukiwarka przystanków. Na mapie z przyrostami grubość kresek odpowiada liczbie linii kursujących na danym odcinku.</p>
+<iframe src="../kraktram_files/stop_map.html" height="400" width="100%" allowfullscreen="true">
+</iframe>
+<iframe src="../kraktram_files/routes_map.html" allowfullscreen="true" height="400" width="100%">
+</iframe>
+<div id="wnioski-z-map" class="section level2">
+<h2>Wnioski z map</h2>
+<ul>
+<li><p>Mapy potwierdzają postawioną wyżej hipotezę o spóźnieniach w okolicach pętli: na samych pętlach spóźnienie jest małe i tramwaje, które dopiero co wyjechały również mają niewielkie spóźnienia. Z kolei tramwaje kończące trasę przyjeżdżają z większym opóźnieniem. W zależności od skali dysproporcji średnie opóźnienia w okolicach pętli należą do jednych z niższych na mapie (Wzgórza Krzesławickie, Os. Piastów, Mistrzejowice, Cmentarz Rakowicki, Cichy Kącik, Czerwone Maki, Nowy Bieżanów), przeciętnych (Kopiec Wandy, Krowodrza Górka, Bronowice Małe, Salwator), lub wyższych (Walcownia, Borek Fałęcki, Kurdwanów, Mały Płaszów). Część tej zależności widzieliśmy w rankingach przystanków.</p></li>
+<li>Sąsiadujące przystanki mają podobne średnie spóźnienia, co świadczy o sporej korelacji pomiędzy nimi. Przyjrzyjmy się korelacji bliżej. <img src="../../post/kraktram_files/figure-html/delay%20autocorrelation-1.png" width="95%" />
+<p style="background-color: #e2e2e2">
+Ten wykres powstał następująco: wziąłem wszystkie fragmenty tras o długości 6 przystanków i wyliczyłem średnie spóźnienia na wszystkich przystanków na ścieżce. Następnie wyznaczyłem korelacje między średnimi spóźnieniami na pierwszym i drugim przystanku ścieżki, pierwszym i trzecim itd. Przy liczeniu korelacji każdemu fragmentowi nadawałem wagę równą liczbie zarejestrowanych na niej przejazdów.
+</p></li>
+<li>Tramwaje nadrabiają spóźnienia! Na mapce można zauważyć, że po najmocniej <em>czerwonych</em> odcinkach, oznaczających wzrost spóźnienia, często występują mocno <em>niebieskie</em>, oznaczające spadek. Zobaczmy tę zależność na wykresie. <img src="../../post/kraktram_files/figure-html/unnamed-chunk-8-1.png" width="70%" />
+<p style="background-color: #e2e2e2:&gt;">
+Jak czytać ten wykres? Przypuśćmy, że przy Filharmonii tramwaj nie miał opóźnienia. Na następnym przystanku, Jubilat, dojechał jednak z dwuminutowym opóźnieniem. Potem udało mu się nadrobić część spóźnienia i na Komorowskiego przyjechał spóźniony minutę. Dla przystanku Jubilat przyrost opóźnienia przed przystankiem wyniósł 2 minuty (od 0 do 2), a po przystanku -1 minutę (od 2 do 1). Taka historia zostałaby w powyższym układzie współrzędnych zaznaczona w punkcie (2, -1). Wykres powstał przez wzięcie średnich z takich sekwencji dla każdego przystanku. Jeżeli na jakimś przystanku dochodziło do rozwidlenia, to wszystkie ścieżki były liczone osobno.
+</p>
+W prawej części wykresu średnia spada poniżej 0, czyli po odcinkach o dużym przyroście spóźnienia następują te z ujemnym przyrostem (spadkiem). Niestety rzadko udaje się nadrobić całe spóźnienie: większość punktów znajduje się powyżej przekątnej (przekątna odpowiada sytuacjom w których tramwaj nadrabia tyle ile wcześniej stracił)</li>
+<li><p>Oprócz fragmentów z dużymi wahaniami warto zwrócić uwagę na fragmenty, gdzie tramwaje przez dłuższy odcinek łapią nieduże spóźnienia, ale mają ich gdzie nadrobić. Najwięcej takich miejsc leży w obszarze pomiędzy przystankami Stradom, Św. Gertrudy, Dworzec Główny, Rondo Mogilskie, Rondo Grzegórzeckie. Choć niektóre przyrosty są bardzo małe, to w całym tym obszarze tylko na dwóch odcinkach opóźnienie spada. Podobne odcinki to: wyjazd z Borku Fałęckiego, od Sanktuarium Bożego Miłosierdzia do Smolki, przejazd Aleją Pokoju od Ronda Czyżyńskiego do Grzegórzeckiego, połączenie Dworca Towarowego ze Starym Kleparzem, czy odcinek od Placu Wolnica do Dworca Płaszów.</p></li>
+</ul>
+</div>
+</div>
+<div id="analiza-pojedynczych-linii" class="section level1">
+<h1>Analiza pojedynczych linii</h1>
+<p>Dotychczas w różnych statystykach korzystałem ze średniej. Można by się zastanowić, czy wobec asymetrii rozkładu nie lepiej byłoby użyć mediany. Na drodze stanęły zaokrąglenia pomiarów. Ponieważ rozkłady są układane z dokładnością do jednej minuty, z taką też dokładnością mierzyłem spóźnienia. Jedynymi możliwymi wartościami mediany były więc 0, 0.5, 1, 1.5 itd. (przy czym przy takiej liczbie danych wartości niecałkowite były mało prawdopodobne). W takiej sytuacje stosunkowo duże różnice w rozkładach pozostawałyby niezauważalne.</p>
+<p>Poniżej będę pokazywał zależność spóźnień od miejsca na trasie i pory dnia, dla wszystkich linii. W takim przedsięwzięciu użycie mediany (czy ogólniej kwantyli) ma dodatkowe przewagi, które warto wykorzystać, a o których napiszę niżej. Jednak przy takich zaokrągleniach ciężko było dopasować szczegółowe modele, więc dodałem do spóźnień jednorodny (i ucięty w zerze) szum. Tak wyglądają dane dla linii 52 w kierunku Osiedla Piastów, w rozbiciu na przystanki, po takiej obróbce.</p>
+<pre class="r"><code>df52 &lt;- dplyr::filter(report, number == 52, direction == &#39;Os.Piastów&#39;)
+df52$delay &lt;- jitter(as.numeric(df52$delay), amount = 0.5)
+df52$delay[df52$delay &lt; 0] &lt;- 0</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/Basic%20plots-1.png" width="95%" /></p>
+<p>Na wykresie jest zbyt dużo punktów, żeby był czytelny, więc dobrze byłoby użyć jakiś statystyk do opisania tych spóźnień. I tutaj lepiej sprawdzą się kwantyle niż średnia. Ponieważ ciężko zidentyfikować i sparametryzować rozkład, sama średnia niewiele nam powie o tym jak spóźnienia się układają. Jeżeli na przykład ktoś ma trzy minuty na przesiadkę i zastanawia się, czy tramwaj nie spóźni się na tyle, żeby mu ją uniemożliwić, to sama średnia nie daje informacji o prawdopodobieństwie odpowiednio małego spóźnienia. Przy pomocy dopasowanych kwantyli możemy zaś to prawdopodobieństwo oszacować.</p>
+<p>Zobaczmy więc kwantyle spóźnień na poszczególnych przystankach.</p>
+<pre class="r"><code>df52_quantiles &lt;- df52 %&gt;% group_by(seq_num) %&gt;% 
+  summarize(`0.2` = quantile(delay, probs = 0.2),
+            `0.3` = quantile(delay, probs = 0.3),
+            `0.4` = quantile(delay, probs = 0.4),
+            `0.5` = quantile(delay, probs = 0.5),
+            `0.6` = quantile(delay, probs = 0.6),
+            `0.7` = quantile(delay, probs = 0.7),
+            `0.8` = quantile(delay, probs = 0.8),
+            `0.9` = quantile(delay, probs = 0.9))</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/quantiles%20plot-1.png" width="95%" /></p>
+<p>Żeby zrozumieć jak czytać taki wykres przypatrzmy się na przykład przystankowi Dunikowskiego (trzeci od końca). Linia podpisana 80% znajduje się na wysokości 2 minut. Oznacza to, że na Dunikowskiego 80% tramwajów spóźnia się mniej niż 2 minuty. Jeżeli chcemy spóźnić się mniej niż minutę, to mamy mniej więcej 60% szans na powodzenie itd.</p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<p>Powyższy wykres możemy potraktować jako ilustrację pewnego modelu regresji kwantylowej. Tak jak w prostej regresji liniowej szacujemy warunkową średnią minimalizując kwadraty błędów <span class="math inline">\(\sum_{i=1}^{n} (y_i - x_i^T\beta)^2\)</span>, tak w dopasowując medianę minimalizujemy wartości bezwzględne (a właściwie połowy wartości bezwzględnych) błędów (<span class="math inline">\(\sum_{i=1}^{n} \frac{1}{2}|y_i - x_i^T\beta|\)</span>), a w przypadku innych kwantyli obkładamy sumowane błędy funkcją <span class="math inline">\(\rho_\tau(\epsilon) = \epsilon(\tau - \mathbb{1}_{\epsilon &lt; 0})\)</span> dla kwantylu <span class="math inline">\(\tau\)</span> (<span class="math inline">\(\rho_{\frac{1}{2}}(x) = \frac{1}{2}|x|\)</span>, co jednak nie zmienia minimum). Istnieją też algorytmy pozwalające dopasowywać modele addytywne, transformując zmienne objaśniące w zależności od kształtu danych.</p>
+<p>W powyższym modelu kwantyle zostały dopasowane do każdego przystanku osobno, czyli jakby do jednej zmiennej kategorycznej z 34 poziomami. Sprawdźmy dopasowanie tego modelu, w szczególności czy <em>ostre</em> różnice pomiędzy sąsiednimi przystankami nie świadczą o naddopsaowaniu (overfittingu).</p>
+<p>Jeżeli dany kwantyl, powiedzmy 0.6 jest dobrze dopasowany, to 60% wszystkich obserwacji powinno się znajdować poniżej wyznaczonej przez niego krzywej. Albo inaczej rzecz ujmując, 60% reszt modelu (różnic pomiędzy wartością zmierzoną, a dopasowaną) powinno być mniejszych od 0. Jak to wygląda w naszym modelu?</p>
+<pre class="r"><code>  resids &lt;- df52 %&gt;% select(seq_num) %&gt;% left_join(df52_quantiles, by = &#39;seq_num&#39;)
+  resids[, -1] &lt;- df52$delay - resids[, -1] &lt; 0
+  
+  resids %&gt;% summarize_at(2:9, mean) %&gt;% cbind(`Miało być` = c(&#39;Wyszło&#39;), .) %&gt;% 
+  kable(digits = 2) %&gt;% kable_styling(bootstrap_options = &#39;responsive&#39;, font_size = 12)</code></pre>
+<table class="table table-responsive" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Miało być
+</th>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Wyszło
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+</tr>
+</tbody>
+</table>
+<p>Kwantyle od 0.2 do 0.4 zdają się być dziwnie zaniżone. Póki co zaostrzmy nasze kryterium. Nie tylko 60% wszystkich reszt powinno być mniejsze od 0, ale powinno tak być dla każdego przystanku. Tym razem zobaczmy dopasowanie na wykresie:</p>
+<pre class="r"><code>  resids %&gt;% group_by(seq_num) %&gt;% summarize_all(mean) %&gt;% gather(quantile, val, -seq_num) %&gt;% 
+    ggplot(aes(seq_num, val, color = quantile)) + geom_line() + facet_grid(quantile ~ .) + 
+    labs(x = &#39;Numer przystanku na trasie&#39;, y = &#39;Wyliczona wartość&#39;) + theme(legend.position = &#39;None&#39;)</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/fit%20checking%20plot-1.png" width="95%" /></p>
+<p>Dopasowanie jest bardzo dobre poza kilkoma miejscami, gdzie niskie kwantyle lądują w 0. Możemy jednak zauważyć, że są to te miejsca, w których są one równe 0. Jasne więc, że nie ma żadnych obserwacji poniżej. Ogółem należy stwierdzić, że kwantyle są dopasowane tam, gdzie być powinny.</p>
+<p>Czy jednak tak duże rozbicie nie powoduje, że taki model byłby niewiarygodny dla nowych danych? Poniższe tabela i wykres przedstawiają wyniki testowania krzyżowego w takiej formie jak tabela i wykres powyżej.</p>
+<pre class="r"><code>set.seed(52)
+df_cv &lt;- cbind(df52, part = sample(1:5, nrow(df52), replace = TRUE))
+
+output_cv &lt;- list()
+kstest_cv &lt;- list()
+
+  for(i in c(1:5)){
+    train &lt;- df_cv[df_cv$part != i, ] #splitting
+    test &lt;- df_cv[df_cv$part == i, ]
+                           
+    kstest_cv[[i]] &lt;- sapply(1:34, function(x) ks.test(train[train$seq_num == x, ]$delay,
+                                                       test[test$seq_num == x, ]$delay)$p.value)
+      
+    cv_quantiles &lt;- train %&gt;% group_by(seq_num) %&gt;% #Quantiles are fitted for train part only
+      summarize(`0.2` = quantile(delay, probs = 0.2),
+                `0.3` = quantile(delay, probs = 0.3),
+                `0.4` = quantile(delay, probs = 0.4),
+                `0.5` = quantile(delay, probs = 0.5),
+                `0.6` = quantile(delay, probs = 0.6),
+                `0.7` = quantile(delay, probs = 0.7),
+                `0.8` = quantile(delay, probs = 0.8),
+                `0.9` = quantile(delay, probs = 0.9))
+
+    test_resids &lt;- test %&gt;% select(seq_num) %&gt;% left_join(cv_quantiles, by = &#39;seq_num&#39;) #in this line: fitted values
+    test_resids[, -1] &lt;- test$delay - test_resids[, -1] &lt; 0
+    
+    output_cv[[i]] &lt;- cbind(part = i, test_resids)
+  }
+
+output_cv &lt;- do.call(rbind, output_cv)</code></pre>
+<table class="table table-responsive" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+part
+</th>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.075
+</td>
+<td style="text-align:right;">
+0.219
+</td>
+<td style="text-align:right;">
+0.353
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+<td style="text-align:right;">
+0.596
+</td>
+<td style="text-align:right;">
+0.693
+</td>
+<td style="text-align:right;">
+0.794
+</td>
+<td style="text-align:right;">
+0.888
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.066
+</td>
+<td style="text-align:right;">
+0.222
+</td>
+<td style="text-align:right;">
+0.361
+</td>
+<td style="text-align:right;">
+0.511
+</td>
+<td style="text-align:right;">
+0.606
+</td>
+<td style="text-align:right;">
+0.703
+</td>
+<td style="text-align:right;">
+0.802
+</td>
+<td style="text-align:right;">
+0.902
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.212
+</td>
+<td style="text-align:right;">
+0.351
+</td>
+<td style="text-align:right;">
+0.493
+</td>
+<td style="text-align:right;">
+0.598
+</td>
+<td style="text-align:right;">
+0.702
+</td>
+<td style="text-align:right;">
+0.808
+</td>
+<td style="text-align:right;">
+0.908
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+0.223
+</td>
+<td style="text-align:right;">
+0.360
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+<td style="text-align:right;">
+0.602
+</td>
+<td style="text-align:right;">
+0.692
+</td>
+<td style="text-align:right;">
+0.798
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.214
+</td>
+<td style="text-align:right;">
+0.354
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+<td style="text-align:right;">
+0.597
+</td>
+<td style="text-align:right;">
+0.703
+</td>
+<td style="text-align:right;">
+0.791
+</td>
+<td style="text-align:right;">
+0.891
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../../post/kraktram_files/figure-html/plotting%20cv-1.png" width="95%" /> Zbiór został losowo podzielony na 5 części. Na czterech zostały policzone kwantyle, porównane potem z kwantylami piątego. Każda z pięciu części raz pełniła rolę testowej.</p>
+<p>Na wykresie widzimy, że żadna z partii testowych nie odstaje na dłuższym odcinku od pozostałych. Różnice pomiędzy kwantylami na zbiorze treningowym i testowym sięgają lokalnie 0.1. Czy to dużo czy mało? W tym modelu każdy przystanek był dopasowywany osobno. Możemy założyć, że kwantyle na zbiorze treningowym i testowym nie odbiegają od siebie zanadto, jeżeli na poszczególnych przystankach rozkłady są równe. Równości rozkładów były powyżej sprawdzane testem Kołmogorowa-Smirnowa. Tak się przedstawiają przybliżone p-wartości dla poszczególnych partii testowych w rozbiciu na przystanki</p>
+<details><summary> <strong>Kliknij, żeby rozwinąć tabelę ▼</strong> </summary>
+<table class="table table-responsive" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+5
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.674
+</td>
+<td style="text-align:right;">
+0.162
+</td>
+<td style="text-align:right;">
+0.605
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+<td style="text-align:right;">
+0.416
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.548
+</td>
+<td style="text-align:right;">
+0.936
+</td>
+<td style="text-align:right;">
+0.599
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+0.798
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.941
+</td>
+<td style="text-align:right;">
+0.734
+</td>
+<td style="text-align:right;">
+0.232
+</td>
+<td style="text-align:right;">
+0.935
+</td>
+<td style="text-align:right;">
+0.545
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.868
+</td>
+<td style="text-align:right;">
+0.467
+</td>
+<td style="text-align:right;">
+0.738
+</td>
+<td style="text-align:right;">
+0.117
+</td>
+<td style="text-align:right;">
+0.648
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:right;">
+0.522
+</td>
+<td style="text-align:right;">
+0.527
+</td>
+<td style="text-align:right;">
+0.304
+</td>
+<td style="text-align:right;">
+0.120
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.715
+</td>
+<td style="text-align:right;">
+0.413
+</td>
+<td style="text-align:right;">
+0.361
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+<td style="text-align:right;">
+0.548
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.721
+</td>
+<td style="text-align:right;">
+0.466
+</td>
+<td style="text-align:right;">
+0.427
+</td>
+<td style="text-align:right;">
+0.668
+</td>
+<td style="text-align:right;">
+0.449
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.752
+</td>
+<td style="text-align:right;">
+0.999
+</td>
+<td style="text-align:right;">
+0.117
+</td>
+<td style="text-align:right;">
+0.187
+</td>
+<td style="text-align:right;">
+0.837
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.402
+</td>
+<td style="text-align:right;">
+0.134
+</td>
+<td style="text-align:right;">
+0.849
+</td>
+<td style="text-align:right;">
+0.159
+</td>
+<td style="text-align:right;">
+0.744
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.512
+</td>
+<td style="text-align:right;">
+0.788
+</td>
+<td style="text-align:right;">
+0.252
+</td>
+<td style="text-align:right;">
+0.410
+</td>
+<td style="text-align:right;">
+0.302
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.880
+</td>
+<td style="text-align:right;">
+0.855
+</td>
+<td style="text-align:right;">
+0.315
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+0.710
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.999
+</td>
+<td style="text-align:right;">
+0.723
+</td>
+<td style="text-align:right;">
+0.829
+</td>
+<td style="text-align:right;">
+0.688
+</td>
+<td style="text-align:right;">
+0.298
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.789
+</td>
+<td style="text-align:right;">
+0.874
+</td>
+<td style="text-align:right;">
+0.480
+</td>
+<td style="text-align:right;">
+0.997
+</td>
+<td style="text-align:right;">
+0.305
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.232
+</td>
+<td style="text-align:right;">
+0.245
+</td>
+<td style="text-align:right;">
+0.958
+</td>
+<td style="text-align:right;">
+0.237
+</td>
+<td style="text-align:right;">
+0.848
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.242
+</td>
+<td style="text-align:right;">
+0.538
+</td>
+<td style="text-align:right;">
+0.233
+</td>
+<td style="text-align:right;">
+0.513
+</td>
+<td style="text-align:right;">
+0.328
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.763
+</td>
+<td style="text-align:right;">
+0.205
+</td>
+<td style="text-align:right;">
+0.337
+</td>
+<td style="text-align:right;">
+0.134
+</td>
+<td style="text-align:right;">
+0.352
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+0.365
+</td>
+<td style="text-align:right;">
+0.137
+</td>
+<td style="text-align:right;">
+0.204
+</td>
+<td style="text-align:right;">
+0.571
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.281
+</td>
+<td style="text-align:right;">
+0.845
+</td>
+<td style="text-align:right;">
+0.140
+</td>
+<td style="text-align:right;">
+0.614
+</td>
+<td style="text-align:right;">
+0.763
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.520
+</td>
+<td style="text-align:right;">
+0.797
+</td>
+<td style="text-align:right;">
+0.189
+</td>
+<td style="text-align:right;">
+0.221
+</td>
+<td style="text-align:right;">
+0.878
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.901
+</td>
+<td style="text-align:right;">
+0.268
+</td>
+<td style="text-align:right;">
+0.086
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+0.936
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.438
+</td>
+<td style="text-align:right;">
+0.620
+</td>
+<td style="text-align:right;">
+0.284
+</td>
+<td style="text-align:right;">
+0.500
+</td>
+<td style="text-align:right;">
+0.914
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+0.106
+</td>
+<td style="text-align:right;">
+0.806
+</td>
+<td style="text-align:right;">
+0.951
+</td>
+<td style="text-align:right;">
+0.555
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.336
+</td>
+<td style="text-align:right;">
+0.191
+</td>
+<td style="text-align:right;">
+0.267
+</td>
+<td style="text-align:right;">
+0.633
+</td>
+<td style="text-align:right;">
+0.442
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.494
+</td>
+<td style="text-align:right;">
+0.818
+</td>
+<td style="text-align:right;">
+0.398
+</td>
+<td style="text-align:right;">
+0.740
+</td>
+<td style="text-align:right;">
+0.494
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.921
+</td>
+<td style="text-align:right;">
+0.032
+</td>
+<td style="text-align:right;">
+0.550
+</td>
+<td style="text-align:right;">
+0.590
+</td>
+<td style="text-align:right;">
+0.093
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.118
+</td>
+<td style="text-align:right;">
+0.034
+</td>
+<td style="text-align:right;">
+0.915
+</td>
+<td style="text-align:right;">
+0.299
+</td>
+<td style="text-align:right;">
+0.434
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.988
+</td>
+<td style="text-align:right;">
+0.357
+</td>
+<td style="text-align:right;">
+0.482
+</td>
+<td style="text-align:right;">
+0.864
+</td>
+<td style="text-align:right;">
+0.696
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.150
+</td>
+<td style="text-align:right;">
+0.972
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:right;">
+0.106
+</td>
+<td style="text-align:right;">
+0.688
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.315
+</td>
+<td style="text-align:right;">
+0.209
+</td>
+<td style="text-align:right;">
+0.220
+</td>
+<td style="text-align:right;">
+0.299
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.764
+</td>
+<td style="text-align:right;">
+0.541
+</td>
+<td style="text-align:right;">
+0.312
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+0.226
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.574
+</td>
+<td style="text-align:right;">
+0.795
+</td>
+<td style="text-align:right;">
+0.892
+</td>
+<td style="text-align:right;">
+0.916
+</td>
+<td style="text-align:right;">
+0.391
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.670
+</td>
+<td style="text-align:right;">
+0.626
+</td>
+<td style="text-align:right;">
+0.120
+</td>
+<td style="text-align:right;">
+0.317
+</td>
+<td style="text-align:right;">
+0.897
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.914
+</td>
+<td style="text-align:right;">
+0.333
+</td>
+<td style="text-align:right;">
+0.548
+</td>
+<td style="text-align:right;">
+0.166
+</td>
+<td style="text-align:right;">
+0.998
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.252
+</td>
+<td style="text-align:right;">
+0.252
+</td>
+<td style="text-align:right;">
+0.905
+</td>
+<td style="text-align:right;">
+0.968
+</td>
+<td style="text-align:right;">
+0.343
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<p>W każdej partii tylko jedna albo dwie wartości znajdują się poniżej progu 0.05. Ponieważ <span class="math inline">\(0.05 \cdot 34 = 1.7\)</span> są to wartości których powinniśmy się spodziewać.</p>
+</div>
+<div id="regresja-kwantylowa" class="section level2">
+<h2>Regresja kwantylowa</h2>
+<p>Dopasujmy teraz modele regresji kwantylowej dla obydwu kierunków, uwzględniające także planowany czas odjazdu i interakcję między tymi zmiennymi. Ponieważ szczegółowe potraktowanie przystanków dobrze się sprawdziło wymusimy szczegółowość przez duży wymiar bazy przestrzeni z której będą dobierane splajny.</p>
+<pre class="r"><code>df52b &lt;- dplyr::filter(report, number == 52, direction == &#39;Czerwone Maki P+R&#39;)
+df52b$delay &lt;- jitter(as.numeric(df52b$delay), amount = 0.5)
+df52b$delay[df52b$delay &lt; 0] &lt;- 0</code></pre>
+<pre class="r"><code>qgam_model_A &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_A, fun = summary)
+
+qgam_model_B &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_B, fun = summary)</code></pre>
+<p>Nie wklejam wyników podsumowań modelu, żeby dodatkowo nie wydłużać wpisu, ale można sprawdzić, że wszystkie współczynniki wyszły statystycznie istotne.</p>
+<p>Przyjrzyjmy się spóźnieniom w godzinach, w których są one największe.</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-9-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-9-2.png" width="95%" /></p>
+<p>W obydwu kierunkach początkowe spóźnienia są bardzo małe, z kilkoma odstającymi przystankami. Potem następuje rozłożony na kilka odcinków wzrost opóźnień i ich rozpiętości. Co ciekawe, w obydwu kierunkach odbywa się to na podobnym odcinku - między Stradomiem, a Cystersów/Lubicz - który wcześniej wskazaliśmy jako jedno z miejsc gdzie występują małe, ale następujące bez przerwy przyrosty spóźnień.</p>
+<p>W kilku miejscach na trasie następują krótkie skoki spóźnień. Dobrze byłoby sprawdzić ich źródła w terenie. Mogą to być np. niekorzystne usytuowanie przystanku względem sygnalizacji świetlnej (podwójne czekanie: najpierw na sygnalizacji, potem na przystanku; dotyczy przystanków Chmieleniec, Norymberska, Kleeberga), trudności ze sprawnym przejazdem przez węzeł komunikacyjny (Centrum Kongresowe ICE, DH Wanda), czy zły stan torowiska (Muzeum Lotnictwa).</p>
+<p>Przyjrzyjmy się ja wyglądały spóźnienia na Stradomiu i na Cystersów w zależności od godziny.</p>
+<p><details> <summary style="text-align:center;"> <strong>▼ Stradom ▼</strong></summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-10-1.png" width="95%" /> </details></p>
+<p><details> <summary style="text-align:center;"> <strong>▼ Cystersów ▼</strong></summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-11-1.png" width="95%" /> </details></p>
+<p>Ciekawe, że w stronę Czerwonych Maków szczyt występuje rano, a w stronę Osiedla Piastów po południu. Przynajmniej na tych dwóch przystankach, bo na całej trasie zależność ta jest jeszcze bardziej interesująca.</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-12-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-12-2.png" width="95%" /></p>
+<p>Ponieważ różnice w przeciętnych spóźnieniach pomiędzy przystankami są znacznie większe niż pomiędzy różnymi porami dnia, mediana została przeskalowana do wartości [0,1]. Inaczej mówiąc, wykresy powyżej powstały jakby przez przeklejenie samych tylko kolorów z wykresów takich jak ten poniżej, zrobionych dla każdego przystanku osobno:</p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-13-1.png" width="95%" height="50%" /></p>
+<p>Najbardziej uderza oczywiście, że szczyt popołudniowy zaczyna się na trasie do Czerwonych Maków gdzieś między Rondem Mogilskim, a Dworcem Głównym. Na poprzednich przystankach spóźnienia ok. 17:00 nie odstają tak mocno. W drugą stronę taka sytuacja ma z kolei miejsce rano, choć kontrast nie jest tak wyraźny. Interesujące byłoby porównanie tych wyników z danymi o przepływie pasażerów.</p>
+<p>Na koniec jedna obserwacja na temat porannego szczytu spóźnień. Przyszło mi do głowy następujace wyjaśnienie faktu, że występuje on później niż zwczajowo kojarzony poranny szczyt komunikacyjny: ok. 10 tramwaje mają bardziej wyśrubowane rozkłady, ale ruch nie zamiera aż tak szybko. Bardzo łatwo było tą hipotezę obalić: planowane czasy przejazdów pomiędzy przystankami generalnie nie różnią się w ciągu dnia (ewentualnie na niektórych odcinkach, późno w nocy).</p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h3 id="diagnostyka-modelu">Diagnostyka modelu</h3>
+<p>Za pomocą poniższej funkcji będę sprawdzał brzegowe dopasowania modeli. Jest to pewien ersatz dla wykresów robaczkowych (worm plotów), fantastycznego narzędzia od analizy modeli regresji kwantylowej, którego tu nie udało się zastosować ze względu na pokrywające się dolne kwantyle. Pokolorowany obszar odpowiada przedziałowi <span class="math inline">\(\pm\)</span> 10 sekund.</p>
+<p>Idealnie kolorowe linie, oznaczające kwantyle na poszczególnych przystankach lub przedziałach czasowych, pokrywałyby się z kwantylami wziętymi z modelu, oznaczonymi przez czarne przerywane linie. Jeżeli linia kolorowa pokazuje np. 0.57, a czarna 0.5, to znaczy, że wartość która w modelu została wyliczona jako mediana tak naprawdę odpowiada wyższemu kwantylowi (jest zawyżona). Odwrotnie, jeżeli kolorowa linia znajduje się pod czarną, to model zaniża w wartość w tamtym miejscu.</p>
+<p>Wartości dla godzin są uśredniane do przedziałów jednogodzinnych. Przystanki są liczone pojedynczo.</p>
+<pre class="r"><code>fit_plot &lt;- function(mqgamObject, type){
+  tau &lt;- as.numeric(names(mqgamObject$fit))#used quantiles
+
+  resids &lt;- qdo(mqgamObject, fun = residuals, type = &#39;response&#39;) %&gt;%
+    as.data.frame()#model residuals
+  
+  if(type == &#39;seq_num&#39;){
+    explan &lt;- mqgamObject$data$seq_num 
+    subtitle &lt;- &#39;Dopasowanie względem numeru przystanku&#39;
+    xlab &lt;- &#39;Numer przystanku na trasie&#39;
+  }
+  if(type == &#39;minutefs&#39;){
+    explan &lt;- hour(round_date(mqgamObject$data$plannedTime, unit = &#39;hours&#39;))
+    subtitle &lt;- &#39;Dopasowanie względem numeru godziny&#39;
+    xlab &lt;- &#39;Godzina&#39;
+  }
+  
+  est &lt;- as.data.frame(resids &lt;= 0)#proportion of values below fitted quantile. Ideally will equal quantile value
+  names(est) &lt;- tau
+  
+  est &lt;- cbind(explan, est) %&gt;%
+    group_by(explan) %&gt;% 
+    summarise_all(funs(mean)) %&gt;% #proportion of residuals under 0
+    gather(key = &#39;quantile&#39;, value = &#39;est&#39;, -explan)
+
+  upper &lt;- as.data.frame(resids &lt;= 1/6) # 10secs upper tolerance
+  names(upper) &lt;- tau
+  upper &lt;- cbind(explan, upper) %&gt;%
+    group_by(explan) %&gt;% summarise_all(funs(mean)) %&gt;%
+    gather(key = &#39;quantile&#39;, value = &#39;upper&#39;, -explan)
+
+  lower &lt;- as.data.frame(resids &lt;= -1/6)
+  names(lower) &lt;- tau
+  lower &lt;- cbind(explan, lower) %&gt;%
+    group_by(explan) %&gt;% summarise_all(funs(mean)) %&gt;%
+    gather(key = &#39;quantile&#39;, value = &#39;lower&#39;, -explan)
+
+  data &lt;- left_join(est, upper, by = c(&#39;explan&#39;,&#39;quantile&#39;)) %&gt;%
+    left_join(lower, by = c(&#39;explan&#39;, &#39;quantile&#39;))
+
+  ggplot(data, aes(x = explan, y = est, ymin = lower, ymax = upper)) +
+    geom_line(aes(color = quantile)) + geom_ribbon(alpha = 0.2) +
+    geom_hline(aes(yintercept = as.numeric(quantile)), color = swatch()[1], linetype = 2) +
+    facet_grid(quantile ~ ., scales = &#39;free_y&#39;) + 
+    scale_x_discrete(limits = sort(explan)) + 
+    theme(legend.position = &#39;none&#39;) + 
+    labs(title = paste(&#39;Linia:&#39;, mqgamObject$data$number[1], &#39;| Kierunek:&#39;, mqgamObject$data$direction[1]), subtitle = subtitle, x = xlab, y = &#39;Empiryczne kwantyle&#39;) 
+}</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-14-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-14-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-14-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-14-4.png" width="95%" /></p>
+<p>W regresji kwantylowej istnieje stosuje się funkcję <span class="math inline">\(R^1(\tau)\)</span>, odpowiednik współczynnika <span class="math inline">\(R^2\)</span> w regresji liniowej. Definiuje się ją jako <span class="math inline">\(1 - \frac{\hat{V}}{V}\)</span>, gdzie <span class="math inline">\(\hat{V}\)</span> oznacza sumę wartości funkcji <span class="math inline">\(\rho\)</span> na resztach modelu (funkcję kosztu modelu), a <span class="math inline">\(V\)</span> sumę wartości funkcji <span class="math inline">\(\rho\)</span> na różnicach między wartościami zmiennej objaśnianej, a jej kwantylami (funkcja kosztu modelu z samym wyrazem wolnym).</p>
+<pre class="r"><code>rho &lt;- function(u, tau) u*(tau - (u &lt; 0))
+
+R1 &lt;- function(mqgamObject){
+
+  tau &lt;- as.numeric(names(mqgamObject$fit))
+  output &lt;- numeric(length(tau))
+  names(output) &lt;- names(mqgamObject$fit)
+  
+  sample_quantiles &lt;- quantile(mqgamObject$model$delay, probs = tau) %&gt;% t() %&gt;% as.data.frame()
+  null_residuals &lt;- sapply(sample_quantiles, function(x) mqgamObject$model$delay - x) %&gt;% as.data.frame()
+  
+  #extracted &lt;- qdo(mqgamObject, fun = predict, type = &#39;response&#39;)
+  
+  for(i in seq_along(tau)){
+  Vhat &lt;- sum(rho(mqgamObject$model$delay - mqgamObject$fit[[i]]$fitted.values, tau[i]))
+  V &lt;- sum(rho(null_residuals[[i]], tau[i]))
+  output[i] &lt;- 1-Vhat/V
+    }
+  output
+}</code></pre>
+Linia: 52 | Kierunek: Os. Piastów | R1
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+</tr>
+</tbody>
+</table>
+Linia: 52 | Kierunek: Os. Piastów | R1
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+</tr>
+</tbody>
+</table>
+<p>Zależność od położenia na trasie i pory dnia rośnie wraz z kwantylami. Najprostsza interpretacja tej obserwacji jest taka, że wraz ze zmianami położenia na trasie i godziny zwiększa się <em>rozstrzał</em> spóźnień.</p>
+<p>Niskie wartości w kwantylach 0.2 i 0.3 mogą wynikać z błędów obliczeniowych spowodowanych pokrywaniem się niskich kwantyli.</p>
+</div>
+</div>
+<div id="pozostae-linie" class="section level2">
+<h2>Pozostałe linie</h2>
+<p><details><summary> Rozwiń ▼ </summary></p>
+<p>W dalszej części pracy będę umieszczał same tylko wykresy, bez komentarza. Wszystkie wykresy spóźnienia względem przystanków są ustawione na 16:30.</p>
+<p>Wydzielmy najpierw zbiory do modelowania poszczególnych linii.</p>
+<pre class="r"><code>lines &lt;- unique(line_ranking$number)
+
+lin_dir_asgn &lt;- function(x){
+  dirs &lt;- filter(line_ranking, number == x) %&gt;% `$`(direction)
+  
+  a &lt;- dplyr::filter(report, number == x, direction == dirs[[1]])
+  a$delay &lt;- jitter(as.numeric(a$delay), amount = 0.5)
+  a$delay[a$delay &lt; 0] &lt;- 0
+  
+  b &lt;- dplyr::filter(report, number == x, direction == dirs[[2]])
+  b$delay &lt;- jitter(as.numeric(b$delay), amount = 0.5)
+  b$delay[b$delay &lt; 0] &lt;- 0
+  
+  assign(paste0(&#39;df&#39;, x, &#39;a&#39;), a, pos = 1)
+  assign(paste0(&#39;df&#39;, x, &#39;b&#39;), b, pos = 1)
+  
+  return(NULL)
+}
+
+purrr::walk(lines, lin_dir_asgn)</code></pre>
+<p>W przypadku linii 52 wymiar bazy spaljnów był dobrany na podstawie cross-validacji modelu z przystankami jako zmienną jakościową. Dla następnych linii przyjąłem inną strategię. Ponieważ przeprowadzenie tak wielu testów trawłoby zbyt długo dla każdej linii podiz zbiór na część testową i trenigową, a następnie sprawdziłem wartość funkcji kosztu dla różnych wymiarów bazy. W przypadkach spornych (różne wyniki dla róznych kwantyli) decydowałem na podstawie wykresów dopasowań brzegowych. Wyniki modelowanie poniżej:</p>
+<ul>
+<li>
+<a href="#linia-1">Linia 1</a>
+</li>
+<li>
+<a href="#linia-2">Linia 2</a>
+</li>
+<li>
+<a href="#linia-3">Linia 3</a>
+</li>
+<li>
+<a href="#linia-4">Linia 4</a>
+</li>
+<li>
+<a href="#linia-5">Linia 5</a>
+</li>
+<li>
+<a href="#linia-6">Linia 6</a>
+</li>
+<li>
+<a href="#linia-8">Linia 8</a>
+</li>
+<li>
+<a href="#linia-9">Linia 9</a>
+</li>
+<li>
+<a href="#linia-10">Linia 10</a>
+</li>
+<li>
+<a href="#linia-11">Linia 11</a>
+</li>
+<li>
+<a href="#linia-13">Linia 13</a>
+</li>
+<li>
+<a href="#linia-14">Linia 14</a>
+</li>
+<li>
+<a href="#linia-16">Linia 16</a>
+</li>
+<li>
+<a href="#linia-18">Linia 18</a>
+</li>
+<li>
+<a href="#linia-19">Linia 19</a>
+</li>
+<li>
+<a href="#linia-20">Linia 20</a>
+</li>
+<li>
+<a href="#linia-21">Linia 21</a>
+</li>
+<li>
+<a href="#linia-22">Linia 22</a>
+</li>
+<li>
+<a href="#linia-24">Linia 24</a>
+</li>
+<li>
+<a href="#linia-44">Linia 44</a>
+</li>
+<li>
+<a href="#linia-50">Linia 50</a>
+</li>
+</ul>
+</li>
+<div id="linia-1" class="section level3">
+<h3>Linia 1</h3>
+<pre class="r"><code>qgam_model_1A &lt;- mqgam(delay ~ ti(seq_num, k = 27) + ti(minutefs, k = 7) + ti(seq_num, minutefs), data = df1a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_1A, fun = summary) #hidden because of lenght
+
+qgam_model_1B &lt;- mqgam(delay ~ ti(seq_num, k = 27) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df1b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_1B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/linia%201%20resp_plot-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%201%20resp_plot-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/linia%201%20heatmap-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%201%20heatmap-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<div id="diagnostyka" class="section level4">
+<h4>Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/linia%201%20fitplot-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%201%20fitplot-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%201%20fitplot-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%201%20fitplot-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+</div>
+</div>
+<div id="linia-2" class="section level3">
+<h3>Linia 2</h3>
+<pre class="r"><code>qgam_model_2A &lt;- mqgam(delay ~ ti(seq_num, k = 7) + ti(minutefs, k = 7) + ti(seq_num, minutefs), data = df2a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_2A, fun = summary) #hidden because of lenght
+
+qgam_model_2B &lt;- mqgam(delay ~ ti(seq_num, k = 6) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df2b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_2B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/linia%202%20repsplot-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/linia%202%20repsplot-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-17-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-17-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-1">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-18-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-18-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-18-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-18-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.03
+</td>
+<td style="text-align:right;">
+-0.02
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-3" class="section level3">
+<h3>Linia 3</h3>
+<pre class="r"><code>qgam_model_3A &lt;- mqgam(delay ~ ti(seq_num, k = 18) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df3a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_3A, fun = summary) #hidden because of lenght
+
+qgam_model_3B &lt;- mqgam(delay ~ ti(seq_num, k = 22) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df3b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_3B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-21-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-21-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-22-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-22-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-2">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-23-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-23-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-23-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-23-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-4" class="section level3">
+<h3>Linia 4</h3>
+<pre class="r"><code>qgam_model_4A &lt;- mqgam(delay ~ ti(seq_num, k = 28) + ti(minutefs, k = 13) + ti(seq_num, minutefs), data = df4a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_4A, fun = summary) #hidden because of lenght
+
+qgam_model_4B &lt;- mqgam(delay ~ ti(seq_num, k = 28) + ti(minutefs, k = 13) + ti(seq_num, minutefs), data = df4b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_4B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-26-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-26-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-27-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-27-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-3">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-28-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-28-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-28-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-28-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.03
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-5" class="section level3">
+<h3>Linia 5</h3>
+<pre class="r"><code>qgam_model_5A &lt;- mqgam(delay ~ ti(seq_num, k = 22, bs = &#39;cs&#39;) + ti(minutefs, k = 14) + ti(seq_num, minutefs), data = df5a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_5A, fun = summary) #hidden because of lenght
+
+qgam_model_5B &lt;- mqgam(delay ~ ti(seq_num, k = 19) + ti(minutefs, k = 14) + ti(seq_num, minutefs), data = df5b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_5B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-31-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-31-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-32-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-32-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-4">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-33-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-33-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-33-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-33-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.01
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-6" class="section level3">
+<h3>Linia 6</h3>
+<pre class="r"><code>qgam_model_6A &lt;- mqgam(delay ~ ti(seq_num, k = 19) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df6a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_6A, fun = summary) #hidden because of lenght
+
+qgam_model_6B &lt;- mqgam(delay ~ ti(seq_num, k = 19) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df6b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_6B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-36-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-36-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-37-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-37-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-5">Diagnostyka</h4>
+<details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-38-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-38-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-38-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-38-4.png" width="95%" />
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-8" class="section level3">
+<h3>Linia 8</h3>
+<pre class="r"><code>qgam_model_8A &lt;- mqgam(delay ~ ti(seq_num, k = 22) + ti(minutefs, k = 14) + ti(seq_num, minutefs), data = df8a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_1A, fun = summary) #hidden because of lenght
+
+qgam_model_8B &lt;- mqgam(delay ~ ti(seq_num, k = 22) + ti(minutefs, k = 14) + ti(seq_num, minutefs), data = df8b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_1B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-41-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-41-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-42-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-42-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-6">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-43-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-43-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-43-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-43-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-9" class="section level3">
+<h3>Linia 9</h3>
+<p>Pomijam z powodu zbyt dużego odsetka niezarejestrowanych odjazdów.</p>
+</div>
+<div id="linia-10" class="section level3">
+<h3>Linia 10</h3>
+<pre class="r"><code>qgam_model_10A &lt;- mqgam(delay ~ ti(seq_num, k = 24) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df10a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_10A, fun = summary) #hidden because of lenght
+
+qgam_model_10B &lt;- mqgam(delay ~ ti(seq_num, k = 25) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df10b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_10B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-46-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-46-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-47-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-47-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-7">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-48-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-48-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-48-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-48-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-11" class="section level3">
+<h3>Linia 11</h3>
+<pre class="r"><code>qgam_model_11A &lt;- mqgam(delay ~ ti(seq_num, k = 15) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df11a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_11A, fun = summary) #hidden because of lenght
+
+qgam_model_11B &lt;- mqgam(delay ~ ti(seq_num, k = 17) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df11b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_11B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-51-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-51-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-52-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-52-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-8">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-53-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-53-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-53-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-53-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.04
+</td>
+<td style="text-align:right;">
+-0.01
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-13" class="section level3">
+<h3>Linia 13</h3>
+<pre class="r"><code>qgam_model_13A &lt;- mqgam(delay ~ ti(seq_num, k = 25) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df13a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_13A, fun = summary) #hidden because of lenght
+
+qgam_model_13B &lt;- mqgam(delay ~ ti(seq_num, k = 25) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df13b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_13B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-56-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-56-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-57-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-57-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-9">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-58-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-58-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-58-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-58-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-14" class="section level3">
+<h3>Linia 14</h3>
+<pre class="r"><code>qgam_model_14A &lt;- mqgam(delay ~ ti(seq_num, k = 31) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df14a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_14A, fun = summary) #hidden because of lenght
+
+qgam_model_14B &lt;- mqgam(delay ~ ti(seq_num, k = 33) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df14b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_14B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-61-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-61-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-62-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-62-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-10">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-63-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-63-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-63-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-63-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-16" class="section level3">
+<h3>Linia 16</h3>
+<p>Pomijam z powodu zbyt dużego odsetka niezarejestrowanych odjazdów.</p>
+</div>
+<div id="linia-18" class="section level3">
+<h3>Linia 18</h3>
+<pre class="r"><code>qgam_model_18A &lt;- mqgam(delay ~ ti(seq_num, k = 23) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df18a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_18A, fun = summary) #hidden because of lenght
+
+qgam_model_18B &lt;- mqgam(delay ~ ti(seq_num, k = 23) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df18b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_18B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-66-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-66-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-67-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-67-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-11">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-68-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-68-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-68-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-68-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.01
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.01
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-19" class="section level3">
+<h3>Linia 19</h3>
+<pre class="r"><code>qgam_model_19A &lt;- mqgam(delay ~ ti(seq_num, k = 17) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df19a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_19A, fun = summary) #hidden because of lenght
+
+qgam_model_19B &lt;- mqgam(delay ~ ti(seq_num, k = 16) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df19b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_19B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-71-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-71-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-72-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-72-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-12">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-73-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-73-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-73-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-73-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-20" class="section level3">
+<h3>Linia 20</h3>
+<pre class="r"><code>qgam_model_20A &lt;- mqgam(delay ~ ti(seq_num, k = 16) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df20a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_20A, fun = summary) #hidden because of lenght
+
+qgam_model_20B &lt;- mqgam(delay ~ ti(seq_num, k = 16) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df20b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_20B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-76-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-76-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-77-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-77-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-13">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-78-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-78-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-78-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-78-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-21" class="section level3">
+<h3>Linia 21</h3>
+<p>Pomijam ze względu na zbyt duży odsetek niezarejestrowanych odjazdów.</p>
+</div>
+<div id="linia-22" class="section level3">
+<h3>Linia 22</h3>
+<pre class="r"><code>qgam_model_22A &lt;- mqgam(delay ~ ti(seq_num, k = 34) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df22a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_22A, fun = summary) #hidden because of lenght
+
+qgam_model_22B &lt;- mqgam(delay ~ ti(seq_num, k = 34) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df22b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_22B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-81-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-81-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-82-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-82-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-14">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-83-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-83-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-83-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-83-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-24" class="section level3">
+<h3>Linia 24</h3>
+<pre class="r"><code>qgam_model_24A &lt;- mqgam(delay ~ ti(seq_num, k = 23) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df24a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_24A, fun = summary) #hidden because of lenght
+
+qgam_model_24B &lt;- mqgam(delay ~ ti(seq_num, k = 25) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df24b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_24B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-86-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-86-2.png" width="95%" /></p>
+<img src="../../post/kraktram_files/figure-html/unnamed-chunk-87-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-87-2.png" width="95%" />
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-15">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-88-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-88-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-88-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-88-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-44" class="section level3">
+<h3>Linia 44</h3>
+<pre class="r"><code>qgam_model_44A &lt;- mqgam(delay ~ ti(seq_num, k = 23) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df44a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_44A, fun = summary) #hidden because of lenght
+
+qgam_model_44B &lt;- mqgam(delay ~ ti(seq_num, k = 23) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df44b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_44B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-91-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-91-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-92-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-92-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-16">Diagnostyka</h4>
+<p><details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-93-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-93-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-93-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-93-4.png" width="95%" /></p>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.01
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linia-50" class="section level3">
+<h3>Linia 50</h3>
+<pre class="r"><code>qgam_model_50A &lt;- mqgam(delay ~ ti(seq_num, k = 15) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df50a, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_50A, fun = summary) #hidden because of lenght
+
+qgam_model_50B &lt;- mqgam(delay ~ ti(seq_num, k = 15) + ti(minutefs, k = 15) + ti(seq_num, minutefs), data = df50b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_50B, fun = summary) #hidden because of lenght</code></pre>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-96-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-96-2.png" width="95%" /></p>
+<p><img src="../../post/kraktram_files/figure-html/unnamed-chunk-97-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-97-2.png" width="95%" /></p>
+<div style="background-color: #e2e2e2;padding: 10px; margin: 5px 10px;">
+<h4 id="diagnostyka-17">Diagnostyka</h4>
+<details><summary> Rozwiń ▼ </summary> <img src="../../post/kraktram_files/figure-html/unnamed-chunk-98-1.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-98-2.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-98-3.png" width="95%" /><img src="../../post/kraktram_files/figure-html/unnamed-chunk-98-4.png" width="95%" />
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+0.2
+</th>
+<th style="text-align:right;">
+0.3
+</th>
+<th style="text-align:right;">
+0.4
+</th>
+<th style="text-align:right;">
+0.5
+</th>
+<th style="text-align:right;">
+0.6
+</th>
+<th style="text-align:right;">
+0.7
+</th>
+<th style="text-align:right;">
+0.8
+</th>
+<th style="text-align:right;">
+0.9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></details></p>
+</div>
+</div>
+<div id="co-dalej" class="section level2">
+<h2>Co dalej?</h2>
+<p>Interesujące byłoby porównaie zebranych tutaj danych z innymi. Na przykład:</p>
+<ul>
+<li>z infomacjami o przepływie pasażerów. Czy jest korelacja pomiędzy ich liczbą, a spóźnienieniami?</li>
+<li>z informacjami o zagęszczeniu ruchu. Jak samochody wpływają na tramwaje?</li>
+<li>z ustawieniami sygnalizacji. Czy niektórych spóźnień nie dałoby się uniknąć gdyby je zmienić?</li>
+</ul>
+</div>
+</div>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="//tags/tramwaje/">tramwaje</a>&nbsp;
+            
+              <a href="//tags/regresja-kwantylowa/">regresja kwantylowa</a>&nbsp;
+            
+              <a href="//tags/krak%C3%B3w/">Kraków</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f&amp;text=Sp%c3%b3%c5%banienia%20krakowskich%20tramwaj%c3%b3w&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f&amp;title=Sp%c3%b3%c5%banienia%20krakowskich%20tramwaj%c3%b3w" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f&amp;title=Sp%c3%b3%c5%banienia%20krakowskich%20tramwaj%c3%b3w" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f&amp;title=Sp%c3%b3%c5%banienia%20krakowskich%20tramwaj%c3%b3w" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https://aczepielik.github.io%2fpost%2fsp%25C3%25B3%25C5%25BAnienia-krakowskich-tramwaj%25C3%25B3w%2f&amp;description=Sp%c3%b3%c5%banienia%20krakowskich%20tramwaj%c3%b3w" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="../../post/hipsteralgebra/" data-toggle="tooltip" data-placement="top" title="Hipsteralgebra">Następny &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "aczepielik-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:adam.czepielik@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/aczepielik" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/adam-czepielik-826477130" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Adam Czepielik
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="../../">adam::blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.58.3</a> napędzany &nbsp;&bull;&nbsp; Motyw <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> przystosowany od <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="../../js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="../../js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
