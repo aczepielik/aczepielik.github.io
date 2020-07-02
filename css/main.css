@@ -28,6 +28,7 @@ p {
 }
 p + p {
     margin: 24px 0 6px 0;
+    /*text-align: justify;*/
 }
 p a {
   /* text-decoration: underline */

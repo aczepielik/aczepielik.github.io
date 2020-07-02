@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on adam::blog</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on adam::blog</description>
+    <title>Diofantos on adam::blog</title>
+    <link>/tags/diofantos/</link>
+    <description>Recent content in Diofantos on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
     <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/diofantos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
       <guid>/post/hipsteralgebra/</guid>
       <description>Pierwszym co się rzuca w oczy przy lekturze Arytmetyki Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię tego jak rozumiemy rozwiązanie problemu, a skończywszy na używanych metodach, widzimy matematykę zupełnie inną od tej, której uczyliśmy się w szkole. Upływ czasu nie wpływa jednak na poprawność diofantosowych rozwiązań. Co więcej, jeśli tylko przełożymy je na znany nam styl, zobaczymy, że upływ czasu nie odjął im również pomysłowości.</description>
-    </item>
-    
-    <item>
-      <title>Spóźnienia krakowskich tramwajów</title>
-      <link>/post/kraktram/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/post/kraktram/</guid>
-      <description>Od pewnego czasu na stronie ttss.krakow.pl możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (Traffic Tram Supervision System), na ttss.krakow.pl/internetservice/. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił pro publico bono znacznie wygodniejszą wersję mapki (https://mpk.</description>
     </item>
     
   </channel>
