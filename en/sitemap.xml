@@ -64,7 +64,7 @@
   </url>
   
   <url>
-    <loc>/en/post/smog-and-transport/</loc>
+    <loc>/en/post/smog/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -89,17 +89,17 @@
   </url>
   
   <url>
-    <loc>/en/post/kraktram.en/</loc>
+    <loc>/en/post/kraktram/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="/post/sp%C3%B3%C5%BAnienia-krakowskich-tramwaj%C3%B3w/"
+                href="/post/kraktram/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/post/kraktram.en/"
+                href="/en/post/kraktram/"
                 />
   </url>
   

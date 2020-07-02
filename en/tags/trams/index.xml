@@ -14,10 +14,10 @@
     
     <item>
       <title>Tram delays in Kraków</title>
-      <link>/en/post/kraktram.en/</link>
+      <link>/en/post/kraktram/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/kraktram.en/</guid>
+      <guid>/en/post/kraktram/</guid>
       <description>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
 The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</description>
     </item>
