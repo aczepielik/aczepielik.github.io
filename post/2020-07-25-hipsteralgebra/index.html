@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pl" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Hipsteralgebra - adam::blog</title>
+  <meta name="description" content="Pierwszym co się rzuca w oczy przy lekturze ,,Arytmetyki&#34; Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię tego jak rozumiemy rozwiązanie problemu, a skończywszy na używanych metodach, widzimy matematykę zupełnie inną od tej, której uczyliśmy się w szkole. Upływ czasu nie wpływa jednak na poprawność diofantosowych rozwiązań. Co więcej, jeśli tylko przełożymy je na znany nam styl, zobaczymy, że upływ czasu nie odjął im również pomysłowości. Najpierw jednak, co bywa trudniejsze, trzeba je przełożyć ze starożytnej greki na polski. Pięć takich tłumaczeń chciałbym tu zaprezentować.">
+  <meta name="author" content="Adam Czepielik"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "adam::blog",
+    
+    "url": "\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "\/post\/2020-07-25-hipsteralgebra\/",
+          "name": "Hipsteralgebra"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Adam Czepielk"
+  },
+  "headline": "Hipsteralgebra",
+  "description" : "Pierwszym co się rzuca w oczy przy lekturze ,,Arytmetyki\x22 Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię tego jak rozumiemy rozwiązanie problemu, a skończywszy na używanych metodach, widzimy matematykę zupełnie inną od tej, której uczyliśmy się w szkole. Upływ czasu nie wpływa jednak na poprawność diofantosowych rozwiązań. Co więcej, jeśli tylko przełożymy je na znany nam styl, zobaczymy, że upływ czasu nie odjął im również pomysłowości. Najpierw jednak, co bywa trudniejsze, trzeba je przełożyć ze starożytnej greki na polski. Pięć takich tłumaczeń chciałbym tu zaprezentować.",
+  "inLanguage" : "pl",
+  "wordCount":  520 ,
+  "datePublished" : "2020-07-02T00:00:00",
+  "dateModified" : "2020-07-02T00:00:00",
+  "image" : "\/img\/logo_black_light.png",
+  "keywords" : [ "Diofantos, Arytmetyka, Greka" ],
+  "mainEntityOfPage" : "\/post\/2020-07-25-hipsteralgebra\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "\/img\/logo_black_light.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Hipsteralgebra" />
+<meta property="og:description" content="Pierwszym co się rzuca w oczy przy lekturze ,,Arytmetyki&#34; Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię tego jak rozumiemy rozwiązanie problemu, a skończywszy na używanych metodach, widzimy matematykę zupełnie inną od tej, której uczyliśmy się w szkole. Upływ czasu nie wpływa jednak na poprawność diofantosowych rozwiązań. Co więcej, jeśli tylko przełożymy je na znany nam styl, zobaczymy, że upływ czasu nie odjął im również pomysłowości. Najpierw jednak, co bywa trudniejsze, trzeba je przełożyć ze starożytnej greki na polski. Pięć takich tłumaczeń chciałbym tu zaprezentować.">
+<meta property="og:image" content="/img/logo_black_light.png" />
+<meta property="og:url" content="/post/2020-07-25-hipsteralgebra/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="adam::blog" />
+
+  <meta name="twitter:title" content="Hipsteralgebra" />
+  <meta name="twitter:description" content="Pierwszym co się rzuca w oczy przy lekturze ,,Arytmetyki&#34; Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię …">
+  <meta name="twitter:image" content="/img/logo_black_light.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="adam::blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="../../css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="../../css/syntax.css" /><link rel="stylesheet" href="../../css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Nawigacja</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../">adam::blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="../../">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="O mnie" href="../../page/about/">O mnie</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="../../en" lang="en">en</a>
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="adam::blog" href="../../">
+            <img class="avatar-img" src="../../img/logo_black_light.png" alt="adam::blog" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Hipsteralgebra</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Opublikowany 2020-07-02
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Adam Czepielk
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<p><strong>Pierwszym co się rzuca w oczy przy lekturze <em>Arytmetyki</em> Diofantosa z Aleksandrii jest jej odmienność od współczesnych tekstów matematycznych. Począwszy od terminologii i oznaczeń, poprzez kwestię tego jak rozumiemy rozwiązanie problemu, a skończywszy na używanych metodach, widzimy matematykę zupełnie inną od tej, której uczyliśmy się w szkole. Upływ czasu nie wpływa jednak na poprawność diofantosowych rozwiązań. Co więcej, jeśli tylko przełożymy je na znany nam styl, zobaczymy, że upływ czasu nie odjął im również pomysłowości. Najpierw jednak, co bywa trudniejsze, trzeba je przełożyć ze starożytnej greki na polski. Pięć takich tłumaczeń chciałbym tu zaprezentować.</strong></p>
+
+<h1 id="skąd-wzięło-się-to-tłumaczenie">Skąd wzięło się to tłumaczenie?</h1>
+
+<p>W lutym 2012 r. Wydział Filologiczny UJ opuścił swoją siedzibę w starym budynku Collegium Paderevianum. Stary gmach został częściowo rozebrany, a obok zaczęło powstawać Paderevianum II. Poszczególne instytuty musiały się w pośpiechu wyprowadzić i przenieść, na czas budowy, do tymczasowych siedzib w innych częściach Uniwersytetu. Jak to często bywa, budowy się dłużą, a tymczasowe rozwiązania okazują się zaskakująco trwałe. I tak w 2018 r. Instytut Filologii Klasycznej ciągle mieścił się w kilku salach Wydziału Matematyki i Informatyki. Mnie, ówczesnemu studentowi IV roku matematyki taki stan rzeczy akurat odpowiadał. Ułatwił mi realizację dość nietypowego pomysłu, żeby nauczyć się starożytnej greki. Dołączyłem do grupy z pierwszego roku filologii klasycznej i nawet udało mi się oficjalnie zaliczyć te zajęcia jako rozszerzenie programu studiów. Dwa semestry <em>Praktycznej nauki języka greckiego</em> mam więc wpisane na dyplomie, jak gdyby nigdy nic, obok <em>Analizy Funkcjonalnej</em>, czy <em>Procesów Stochastycznych</em>.</p>
+
+<p>Po <em>praktycznej nauce</em> greki na pierwszym roku, studenci filologii klasycznej na UJ uczą się <em>Gramatyki opisowej języka greckiego</em>. Ja tak daleko nie zaszedłem, bo na piątym roku wyjechałem na Erasmusa. Jakkolwiek ten wyjazd przeszkodził w chodzeniu na zajęcia z greki, to na swój sposób zmotywował mnie do samodzielnej pracy translatorskiej. Musiałem bowiem jakoś zaliczyć kurs <em>Historia matematyki I</em>, obejmujący matematykę starożytną, średniowieczną i renesansową. W Leuven historii matematyki nie wykładano, więc nie mogąc chodzić na wykłady, musiałem napisać pracę zaliczeniową. Zgłosiłem więc temat, który już wcześniej chodził mi po głowie, mianowicie tłumaczenie fragmentów <em>Arytmetyki</em>  wraz z opracowaniem. Miałem zamiar zająć się tym tekstem już od początku nauki greki. Gdyby nie okoliczności zewnętrze pewnie skończyłoby się na odkładaniu tych planów dalej i dalej, aż będę sądził, że umiem język wystarczająco dobrze. Tymczasem temat został zgłoszony, więc musiał zostać zrealizowany.</p>
+
+<p>Do końca semestru przygotowałem wstęp i tłumaczenie pięciu zadań z komentarzem. Potem nie miałem już czasu lub zapału, żeby kontynuować prace. Ostatni uznałem jednak, że warto podzielić się tym co powstało z gronem szerszym niż kilkoro znajomych. Tłumaczenie jest dalekie od ideału. Patrząc z perspektywy półtora roku wydaje mi się zbyt &ldquo;uczniackie&rdquo; - niepotrzebnie dosłowne kosztem stylistycznej poprawności. Cóż, być może moja znajomość greki pozwala tylko na tyle. Mam jednak nadzieję, że tym, którzy chcieliby przeczytać po polsku, jak się rozwiązywało równania w III w., dam okazję napocząć temat.</p>
+
+<h1 id="co-dalej">Co dalej?</h1>
+
+<p>Byłoby dobrze, żeby tłumaczenie nie skończyło na tych pięciu zadaniach, prawda? Gdyby ktoś z czytelników i czytelniczek był zainteresowany współpracą przy kontynuacji tłumaczenia, albo pracował nad własnym i chciał zasięgnąć rady, to zapraszam do kontaktu. Odpowiednie adresy są w stopce bloga.</p>
+
+<p><a href="../../files/Arithmetica.pdf"><img src="../../files/240px-Pdf-2127829.png" style="float:left;height:30px;"/>
+Diofantosa z Aleksandrii Arytmetyka. Pięć wybranych zadań. [Plik do pobrania]</a></p>
+
+<p><object data="../../files/Arithmetica.pdf" type="application/pdf" style="width:750px; height:600px">
+  <embed src="../../files/Arithmetica.pdf" type="application/pdf" />
+</object></p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="//tags/diofantos/">Diofantos</a>&nbsp;
+            
+              <a href="//tags/arytmetyka/">Arytmetyka</a>&nbsp;
+            
+              <a href="//tags/greka/">Greka</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f&amp;text=Hipsteralgebra&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f&amp;title=Hipsteralgebra" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f&amp;title=Hipsteralgebra" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f&amp;title=Hipsteralgebra" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https://aczepielik.github.io%2fpost%2f2020-07-25-hipsteralgebra%2f&amp;description=Hipsteralgebra" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="../../post/kraktram/" data-toggle="tooltip" data-placement="top" title="Spóźnienia krakowskich tramwajów">&larr; Poprzedni</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "aczepielik-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:adam.czepielik@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/aczepielik" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/adam-czepielik-826477130" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Adam Czepielik
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="../../">adam::blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.58.3</a> napędzany &nbsp;&bull;&nbsp; Motyw <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> przystosowany od <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="../../js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="../../js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
