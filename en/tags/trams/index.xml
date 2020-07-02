@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Trams on adam::blog</title>
+    <title>trams on adam::blog</title>
     <link>/en/tags/trams/</link>
-    <description>Recent content in Trams on adam::blog</description>
+    <description>Recent content in trams on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>

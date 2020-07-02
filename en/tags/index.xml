@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Arimax</title>
+      <title>ARIMAX</title>
       <link>/en/tags/arimax/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>Local</title>
+      <title>local</title>
       <link>/en/tags/local/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
@@ -40,16 +40,7 @@
     </item>
     
     <item>
-      <title>Quantile Regression</title>
-      <link>/en/tags/quantile-regression/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/quantile-regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Smog</title>
+      <title>smog</title>
       <link>/en/tags/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
@@ -58,7 +49,16 @@
     </item>
     
     <item>
-      <title>Trams</title>
+      <title>quantile regression</title>
+      <link>/en/tags/quantile-regression/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>/en/tags/quantile-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trams</title>
       <link>/en/tags/trams/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
