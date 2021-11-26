@@ -2,99 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on adam::blog</title>
-    <link>https://aczepielik.github.io/en/tags/</link>
+    <link>/en/tags/</link>
     <description>Recent content in Tags on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Defoe</title>
-      <link>https://aczepielik.github.io/en/tags/defoe/</link>
+      <link>/en/tags/defoe/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/defoe/</guid>
+      <guid>/en/tags/defoe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>epidemiscs</title>
-      <link>https://aczepielik.github.io/en/tags/epidemiscs/</link>
+      <link>/en/tags/epidemiscs/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/epidemiscs/</guid>
+      <guid>/en/tags/epidemiscs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>plague</title>
-      <link>https://aczepielik.github.io/en/tags/plague/</link>
+      <link>/en/tags/plague/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/plague/</guid>
+      <guid>/en/tags/plague/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SIR</title>
-      <link>https://aczepielik.github.io/en/tags/sir/</link>
+      <link>/en/tags/sir/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/sir/</guid>
+      <guid>/en/tags/sir/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ARIMAX</title>
-      <link>https://aczepielik.github.io/en/tags/arimax/</link>
+      <link>/en/tags/arimax/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/arimax/</guid>
+      <guid>/en/tags/arimax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kraków</title>
-      <link>https://aczepielik.github.io/en/tags/krak%C3%B3w/</link>
+      <link>/en/tags/krak%C3%B3w/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/krak%C3%B3w/</guid>
+      <guid>/en/tags/krak%C3%B3w/</guid>
       <description></description>
     </item>
     
     <item>
       <title>local</title>
-      <link>https://aczepielik.github.io/en/tags/local/</link>
+      <link>/en/tags/local/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/local/</guid>
+      <guid>/en/tags/local/</guid>
       <description></description>
     </item>
     
     <item>
       <title>smog</title>
-      <link>https://aczepielik.github.io/en/tags/smog/</link>
+      <link>/en/tags/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/smog/</guid>
+      <guid>/en/tags/smog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>quantile regression</title>
-      <link>https://aczepielik.github.io/en/tags/quantile-regression/</link>
+      <link>/en/tags/quantile-regression/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/quantile-regression/</guid>
+      <guid>/en/tags/quantile-regression/</guid>
       <description></description>
     </item>
     
     <item>
       <title>trams</title>
-      <link>https://aczepielik.github.io/en/tags/trams/</link>
+      <link>/en/tags/trams/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/tags/trams/</guid>
+      <guid>/en/tags/trams/</guid>
       <description></description>
     </item>
     

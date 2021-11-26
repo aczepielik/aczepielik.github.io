@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>epidemiscs on adam::blog</title>
-    <link>https://aczepielik.github.io/en/tags/epidemiscs/</link>
+    <link>/en/tags/epidemiscs/</link>
     <description>Recent content in epidemiscs on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/en/tags/epidemiscs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/epidemiscs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Upon &#34;A Journal of the Plague Year&#34;</title>
-      <link>https://aczepielik.github.io/en/post/upon-a-journal-of-the-plague-year/</link>
+      <link>/en/post/upon-a-journal-of-the-plague-year/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>https://aczepielik.github.io/en/post/upon-a-journal-of-the-plague-year/</guid>
+      <guid>/en/post/upon-a-journal-of-the-plague-year/</guid>
       <description>He was only five years old when the Great Plague broke out so could not remember it. To describe it, nearly sixty years later, in his novel, Daniel Defoe needed to dust off faded diaries, survey old medical pamphlets and query archival statistics. Well done research paid off. For decades the readers of “A Journal of the Plague Year” were thinking they are reading genuine memoirs of the 1665’s Great Plague eyewitness.</description>
     </item>
     

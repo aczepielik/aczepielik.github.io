@@ -3,150 +3,150 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://aczepielik.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/"
+                href="/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/"
+                href="/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/arytmetyka/</loc>
+    <loc>/tags/arytmetyka/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/diofantos/</loc>
+    <loc>/tags/diofantos/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/greka/</loc>
+    <loc>/tags/greka/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/post/2020-07-25-hipsteralgebra/</loc>
+    <loc>/post/2020-07-25-hipsteralgebra/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/post/"
+                href="/en/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/post/"
+                href="/post/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/tags/"
+                href="/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/tags/"
+                href="/tags/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/krak%C3%B3w/</loc>
+    <loc>/tags/krak%C3%B3w/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/tags/krak%C3%B3w/"
+                href="/en/tags/krak%C3%B3w/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/tags/krak%C3%B3w/"
+                href="/tags/krak%C3%B3w/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/regresja-kwantylowa/</loc>
+    <loc>/tags/regresja-kwantylowa/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/post/kraktram/</loc>
+    <loc>/post/kraktram/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/post/kraktram/"
+                href="/en/post/kraktram/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/post/kraktram/"
+                href="/post/kraktram/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/tags/tramwaje/</loc>
+    <loc>/tags/tramwaje/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/page/about/</loc>
+    <loc>/page/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/page/about/"
+                href="/en/page/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/page/about/"
+                href="/page/about/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/categories/"
+                href="/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/categories/"
+                href="/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://aczepielik.github.io/page/</loc>
+    <loc>/page/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://aczepielik.github.io/en/page/"
+                href="/en/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://aczepielik.github.io/page/"
+                href="/page/"
                 />
   </url>
   
