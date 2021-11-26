@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>quantile regression on adam::blog</title>
-    <link>/en/tags/quantile-regression/</link>
+    <link>https://aczepielik.github.io/en/tags/quantile-regression/</link>
     <description>Recent content in quantile regression on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/quantile-regression/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/en/tags/quantile-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tram delays in Kraków</title>
-      <link>/en/post/kraktram/</link>
+      <link>https://aczepielik.github.io/en/post/kraktram/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/kraktram/</guid>
+      <guid>https://aczepielik.github.io/en/post/kraktram/</guid>
       <description>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
 The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</description>
     </item>

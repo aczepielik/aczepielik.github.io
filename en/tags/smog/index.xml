@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>smog on adam::blog</title>
-    <link>/en/tags/smog/</link>
+    <link>https://aczepielik.github.io/en/tags/smog/</link>
     <description>Recent content in smog on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/smog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/en/tags/smog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Smog and transport resolution in Kraków</title>
-      <link>/en/post/smog/</link>
+      <link>https://aczepielik.github.io/en/post/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/smog/</guid>
+      <guid>https://aczepielik.github.io/en/post/smog/</guid>
       <description>In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts.</description>
     </item>
     

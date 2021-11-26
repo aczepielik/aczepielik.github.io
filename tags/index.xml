@@ -2,63 +2,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on adam::blog</title>
-    <link>/tags/</link>
+    <link>https://aczepielik.github.io/tags/</link>
     <description>Recent content in Tags on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arytmetyka</title>
-      <link>/tags/arytmetyka/</link>
+      <link>https://aczepielik.github.io/tags/arytmetyka/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/arytmetyka/</guid>
+      <guid>https://aczepielik.github.io/tags/arytmetyka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Diofantos</title>
-      <link>/tags/diofantos/</link>
+      <link>https://aczepielik.github.io/tags/diofantos/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/diofantos/</guid>
+      <guid>https://aczepielik.github.io/tags/diofantos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Greka</title>
-      <link>/tags/greka/</link>
+      <link>https://aczepielik.github.io/tags/greka/</link>
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/greka/</guid>
+      <guid>https://aczepielik.github.io/tags/greka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kraków</title>
-      <link>/tags/krak%C3%B3w/</link>
+      <link>https://aczepielik.github.io/tags/krak%C3%B3w/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/krak%C3%B3w/</guid>
+      <guid>https://aczepielik.github.io/tags/krak%C3%B3w/</guid>
       <description></description>
     </item>
     
     <item>
       <title>regresja kwantylowa</title>
-      <link>/tags/regresja-kwantylowa/</link>
+      <link>https://aczepielik.github.io/tags/regresja-kwantylowa/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/regresja-kwantylowa/</guid>
+      <guid>https://aczepielik.github.io/tags/regresja-kwantylowa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tramwaje</title>
-      <link>/tags/tramwaje/</link>
+      <link>https://aczepielik.github.io/tags/tramwaje/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/tramwaje/</guid>
+      <guid>https://aczepielik.github.io/tags/tramwaje/</guid>
       <description></description>
     </item>
     

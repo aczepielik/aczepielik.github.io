@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on adam::blog</title>
-    <link>/en/post/</link>
+    <link>https://aczepielik.github.io/en/post/</link>
     <description>Recent content in Posts on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aczepielik.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Upon &#34;A Journal of the Plague Year&#34;</title>
-      <link>/en/post/upon-a-journal-of-the-plague-year/</link>
+      <link>https://aczepielik.github.io/en/post/upon-a-journal-of-the-plague-year/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/upon-a-journal-of-the-plague-year/</guid>
+      <guid>https://aczepielik.github.io/en/post/upon-a-journal-of-the-plague-year/</guid>
       <description>He was only five years old when the Great Plague broke out so could not remember it. To describe it, nearly sixty years later, in his novel, Daniel Defoe needed to dust off faded diaries, survey old medical pamphlets and query archival statistics. Well done research paid off. For decades the readers of “A Journal of the Plague Year” were thinking they are reading genuine memoirs of the 1665’s Great Plague eyewitness.</description>
     </item>
     
     <item>
       <title>Smog and transport resolution in Kraków</title>
-      <link>/en/post/smog/</link>
+      <link>https://aczepielik.github.io/en/post/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/smog/</guid>
+      <guid>https://aczepielik.github.io/en/post/smog/</guid>
       <description>In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts.</description>
     </item>
     
     <item>
       <title>Tram delays in Kraków</title>
-      <link>/en/post/kraktram/</link>
+      <link>https://aczepielik.github.io/en/post/kraktram/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/kraktram/</guid>
+      <guid>https://aczepielik.github.io/en/post/kraktram/</guid>
       <description>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
 The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</description>
     </item>
