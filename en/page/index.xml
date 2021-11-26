@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on adam::blog</title>
@@ -6,18 +6,14 @@
     <description>Recent content in Pages on adam::blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
-    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    
-	<atom:link href="/en/page/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster><atom:link href="/en/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adam Czepielik</title>
       <link>/en/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
       <guid>/en/page/about/</guid>
-      <description>I am a graduate student of Mathematics at the Jagiellonian University in Kraków and a data analysis enthusiast. As I owe a lot to many blog and tutorials authors, I have decided to start a blog by my own, to share some of my data insights.</description>
+      <description>I am a graduate student of Mathematics at the Jagiellonian University in Kraków and a data analysis enthusiast. As I owe a lot to many blog and tutorials authors, I have decided to start a blog by my own, to share some of my data insights. </description>
     </item>
     
   </channel>
