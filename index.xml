@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>adam::blog</title>
@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hipsteralgebra</title>
       <link>/post/2020-07-25-hipsteralgebra/</link>
@@ -36,8 +32,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
       <guid>/page/about/</guid>
-      <description>Jestem abolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako analityk danych. Niektóre z przedsięwzięć, którymi zajmuję się po godzinach, rozrastają się na tyle, że warto opublikować ich wyniki. Wtedy wrzucam je na tego bloga.
-CV</description>
+      <description>Jestem abolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako analityk danych. Niektóre z przedsięwzięć, którymi zajmuję się po godzinach, rozrastają się na tyle, że warto opublikować ich wyniki. Wtedy wrzucam je na tego bloga.CV </description>
     </item>
     
   </channel>
