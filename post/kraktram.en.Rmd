@@ -1,0 +1,429 @@
+---
+title: Tram delays in Kraków
+author: Adam Czepielik
+date: '2018-08-29'
+slug: kraktram.en
+aliases: ["/en/post/kraktram.en/"]
+tags: [trams, quantile regression, Kraków, local]
+subtitle: ''
+---
+
+When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I've been planning the analysis of tram delays based on it and eventually I've taken it as my personal summer project. 
+
+The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.
+
+One important remark: collected data correspond to holiday timetable and are not representative for the ordinary one.
+
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, out.width = '95%', fig.width = 8, fig.height = 6, fig.retina = 1, dpi = 300, cache = TRUE)
+library(ggthemr)
+ggthemr('fresh')
+```
+
+```{r loading packages, cache=FALSE}
+library(httr)
+library(jsonlite)
+library(dplyr)
+library(lubridate)
+library(readr)
+library(ggplot2)
+library(ggmap)
+library(leaflet)
+library(leaflet.extras)
+library(knitr)
+library(kableExtra)
+library(RColorBrewer)
+library(htmltools)
+library(mgcv)
+library(qgam)
+library(tidyr)
+library(ggpubr)
+library(forcats)
+```
+
+```{r loading data bases}
+stop_names <- readRDS('~/R/kraktram/db_backup/stop-name-db.RDS') #contains stop names, codes and coordinates
+line_stops <- readRDS("~/R/kraktram/db_backup/linestops.RDS") #contains ordered stop names prescribed to lines and directions 
+routes <- readRDS('~/R/kraktram/db_backup/routes.RDS') #contains coordinates of track segments
+line_routes <- readRDS('~/R/kraktram/db_backup/line-routes.RDS') #contains coordinates of track segments grouped by lines and directions
+line_routes_directed <- readRDS('~/R/kraktram/db_backup/line-routes-directed.RDS')
+```
+
+```{r reading-reports}
+read_report <- function(day){
+  path <- paste0('~/R/kraktram/reports/report_07-', day, '.csv')
+  read_csv(path, col_types = cols(
+    index = col_integer(),
+    time_stamp = col_datetime(format = ""),
+    stop = col_integer(),
+    number = col_integer(),
+    direction = col_character(),
+    plannedTime = col_datetime(format = ""),
+    vehicleId = col_character(),
+    tripId = col_character(),
+    status = col_character()
+  ))
+}
+
+days <- c(24, 25, 26, 27, 30, 31)
+report <- lapply(days, FUN = read_report)
+report <- do.call(rbind, report)
+```
+
+```{r stops-ranking}
+stop_ranking <- report %>% group_by(stopName) %>% summarise(mean_delay = mean(as.numeric(delay), na.rm = TRUE), sq = min(seq_num, na.rm = TRUE))
+```
+
+# Distribution
+
+Let us start with the distribution of delays.
+
+```{r delay-histogram, fig.height=4}
+report <- report %>% filter(!is.na(vehicleId) & !is.na(seq_num))
+
+ggthemr('fresh', layout = 'scientific')
+ggplot(report, aes(delay)) + geom_histogram(aes(y = ..density..), binwidth = 1, color = swatch()[7]) + 
+  labs(title = "Delays' distribution", x = "Delay in minutes", y = "") + 
+  scale_x_continuous(breaks = seq(0, 12, 1), expand = c(0,0)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), labels = scales::percent, expand = c(0, 0), limits = c(0, 0.5))
+```
+
+A pessimist could say that more than half of the trams depart late. An optimist, on the other hand, that the vast majority of delays small ones, up to 2 minutes and 1 minute delays are negligible because the round-off error equals 1 minute. Anyway, the average lateness in the sample equals one minute and 0.3 seconds, and the standard deviation is one minute and 23 seconds (1.39 minutes). This distribution can not be easily identified with any of the well-known distributions from textbooks, regardless of whether we treat lateness as a discrete variable or as a continuous but fraught with rounding errors.
+
+```{r}
+datetime_to_minutefs <- function(datetime){
+  if(hour(datetime) == 0){
+    as.numeric(difftime(datetime, floor_date(datetime, unit = 'days'), units = 'mins') + 20*60)
+  } else {
+    as.numeric(difftime(datetime, floor_date(datetime, unit = 'days') + hours(4), units = 'mins'))
+  }
+}
+
+report$minutefs <- sapply(report$plannedTime, datetime_to_minutefs)
+```
+
+# Maps
+
+Two interactive maps below show mean delays on stops and delay changes between them.
+```{r summary-generator, message=FALSE}
+report_directions <- report %>% group_by(tripId) %>% arrange(tripId, seq_num) %>% 
+  rename(by = stopName) %>% 
+  mutate(from = lag(by), to = lead(by)) %>%
+  ungroup() %>% 
+  select(index, number, direction, time_stamp, from, by, delay, seq_num) %>%  
+  right_join(line_routes_directed, by = c('number', 'direction', 'from', 'by'))
+
+directions_summary <- report_directions %>% group_by(by, name) %>%
+  summarise(avg = as.numeric(mean(delay, na.rm = TRUE))) %>% ungroup()
+  
+stop_dir_summary <- function(stopName){
+  filter(directions_summary, by == stopName) %>%
+    select(name, avg) %>% kable(col.names = c("Path", "Average delay"), digits = 2)
+}
+
+all_dir_summaries <- lapply(stop_names$name, stop_dir_summary)
+names(all_dir_summaries) <- stop_names$name
+```
+
+```{r stop map}
+# krk_bbox <- make_bbox(longitude, latitude, data = stop_names) #boundaries of map
+# # 
+# pal <- colorNumeric('RdYlGn', domain = c(min(as.numeric(stop_ranking$mean_delay)), max(as.numeric(stop_ranking$mean_delay))), reverse = TRUE)
+# # 
+# # 
+# stops_map <- left_join(report, stop_names, by = c('stop' = 'shortName', 'stopName' = 'name')) %>%
+#   group_by(stop, stopName, longitude, latitude) %>%
+#   summarise(avg = as.numeric(mean(delay, na.rm = TRUE)))
+# 
+# leaflet() %>%
+#   addProviderTiles(providers$Stamen.TonerLines, options = providerTileOptions(minzoom = 8)) %>%
+#   setView(lng = 19.9388, lat = 50.0617, zoom = 12) %>%
+#   setMaxBounds(krk_bbox[[1]] - 0.03, krk_bbox[[2]] - 0.03, krk_bbox[[3]] + 0.03, krk_bbox[[4]] + 0.03) %>%
+#   addCircleMarkers(data = stops_map,
+#                    label = ~stopName,
+#                    color = ~pal(avg), opacity = 1, fillOpacity = 0.7,
+#                    group = 'stops',
+#                    popup = ~paste0('<b>', htmlEscape(stopName), '</b>',
+#                                    '</br>',
+#                                    'Average delay:', ' ', round(avg, 2), ' min',
+#                                    '</br>', all_dir_summaries[stopName])) %>%
+#   addCircles(data = stops_map,
+#              color = 'black',
+#              opacity = 0, fillOpacity = 0, weight = 0, radius = 0,
+#              label = ~stopName,
+#              group = 'fix') %>%
+#     addSearchFeatures(targetGroups = 'fix',
+#                     options = searchFeaturesOptions(
+#                       zoom = 14, firstTipSubmit = TRUE,
+#                       autoCollapse = TRUE, hideMarkerOnCollapse = TRUE)) %>%
+#   addFullscreenControl() %>%
+#   addLegend(pal = pal, values = ~as.numeric(mean_delay), data = stop_ranking,
+#             position = 'bottomright', opacity = 1,
+#             labFormat = labelFormat(suffix = " min"),
+#             title = 'Average delay') %>%
+#  htmlwidgets::saveWidget('stop_map.en.html')
+```
+
+```{r routes-map}
+# report_routes <- report %>% group_by(tripId) %>% arrange(tripId, seq_num) %>% 
+#   rename(from = stopName) %>% 
+#   mutate(to = lead(from)) %>%
+#   filter(!is.na(to)) %>% 
+#   mutate(name = paste(from, to, sep = " - "), delay_increment = c(diff(delay), 0)) %>% 
+#   ungroup() %>% 
+#   select(index, time_stamp, number, direction, name, delay, delay_increment, seq_num) %>% 
+#   right_join(routes, by = 'name') 
+# 
+# report_routes_map <- report_routes %>% group_by(name) %>%
+#   summarise(avg_increment = mean(delay_increment)) %>% 
+#   arrange(desc(avg_increment)) %>% right_join(routes, by = 'name') %>% 
+#   select(-from, -to)
+# 
+# transform_cos <- function(x, y, xend, yend){
+#   r <- sqrt((xend - x)^2 + (yend - y)^2)
+#   (xend - x)/r
+# }
+# 
+# transform_sin <- function(x, y, xend, yend){
+#   r <- sqrt((xend - x)^2 + (yend - y)^2)
+#   (yend - y)/r
+# }
+# 
+# routes2 <- report_routes_map %>% rowwise() %>%
+#   mutate(cosinus = transform_cos(from.longitude, from.latitude, to.longitude, to.latitude),
+#          sinus = transform_sin(from.longitude, from.latitude, to.longitude, to.latitude)) %>% 
+#   mutate(from.longitude = from.longitude + sqrt(lines)*0.0002*sinus,
+#          from.latitude = from.latitude - sqrt(lines)*0.0002*cosinus,
+#          to.longitude = to.longitude + sqrt(lines)*0.0002*sinus,
+#          to.latitude=  to.latitude - sqrt(lines)*0.0002*cosinus) %>% 
+#   ungroup()
+# 
+# library(leaflet.extras)
+# route_pal <- colorNumeric('RdBu', domain = c(min(report_routes_map$avg_increment, na.rm = TRUE), 1), reverse = TRUE)
+# 
+# routes_leaflet.en <-
+#   leaflet() %>%
+#   addProviderTiles(providers$Stamen.TonerLines, options = providerTileOptions(minzoom = 8, opacity = 0.1)) %>%
+#   setView(lng = 19.9410, lat = 50.0617, zoom = 13) %>%
+#   setMaxBounds(krk_bbox[[1]] - 0.03, krk_bbox[[2]] - 0.03, krk_bbox[[3]] + 0.03, krk_bbox[[4]] + 0.03)
+# 
+# for(i in 1:nrow(routes2)){
+#   routes_leaflet.en <- routes_leaflet.en %>%
+#     addPolylines(lng = c(routes2$from.longitude[i], routes2$to.longitude[i]),
+#                  lat = c(routes2$from.latitude[i], routes2$to.latitude[i]),
+#                  color = route_pal(min(routes2$avg_increment[i], 0.999)),
+#                  opacity = 1,
+#                  weight = sqrt(routes2$lines[i])*2.5,
+#                  label = routes2$name[i],
+#                  popup = paste0('<b>', report_routes_map$name[i], '</b>', '</br>',
+#                                 'Mean delay change: ', round(routes2$avg_increment[i], 2), 'min', '</br>',
+#                                 'Number of lines: ', routes2$lines[i]))
+# }
+```
+
+```{r}
+# routes_leaflet.en %>%
+#   addCircles(data = stops_map,
+#              color = 'black',
+#              opacity = 0.7, fillOpacity = 0.7,
+#              label = ~stopName,
+#              group = 'stops') %>%
+#   addLegend(pal = route_pal, values = ~avg_increment, data = routes2,
+#             position = 'bottomright', opacity = 1,
+#             labFormat = labelFormat(suffix = " min"),
+#             title = 'Mean delay change') %>%
+#   addFullscreenControl() %>%
+#   addSearchFeatures(targetGroups = 'stops',
+#                     options = searchFeaturesOptions(
+#                       zoom = 14, firstTipSubmit = TRUE,
+#                       autoCollapse = TRUE, hideMarkerOnCollapse = TRUE)) %>%
+# htmlwidgets::saveWidget('routes_map.en.html')
+```
+
+
+<iframe src="../kraktram.en_files/stop_map.en.html" height="400" width="100%" allowfullscreen="true"></iframe>
+
+The mean delay on a particular stops almost always summarizes delays on different paths with this stop in a middle. Those different paths (at least two opposite directions) can differ, sometimes strongly, from each other with respect to average delay. Therefore, I specify mean delay on each path in pop-ups. As system measures departures, not arrivals, there are missing values near loops (NA for names, NaN for values).
+
+<iframe src="../kraktram.en_files/routes_map.en.html" allowfullscreen="true" height="400" width="100%"></iframe>
+
+## One observation from the second map
+Does it appear to you that intensive-red segments (big delay increase) tend to lie next to intensive-blue (big decrease)? Yes, they are! The graph below shows mean delay change after a given stop against the change before it.
+
+```{r, fig.asp=1, fig.height=4,out.width='70%'}
+incr_param <- report %>% group_by(tripId) %>% arrange(tripId, seq_num) %>% 
+  transmute(from = lag(stopName),
+         by = stopName,
+         to = lead(stopName), 
+         delay_inc_prev = delay - lag(delay),
+         delay_inc_con = lead(delay) - delay) %>% 
+  ungroup() %>% select(-tripId) %>% 
+  inner_join(unique(select(line_routes_directed, -number, -direction, -name)), 
+            by = c('from', 'by', 'to')) %>% 
+  group_by(from, by, to, longitude, latitude) %>% group_by(N = n(), add = TRUE) %>% 
+  filter(!is.na(delay_inc_prev) & !is.na(delay_inc_con))
+
+incr_param %>% summarise_all(mean) %>% 
+ggplot(aes(delay_inc_prev, delay_inc_con)) + 
+  geom_hline(aes(yintercept = 0), linetype = 2, color = swatch()[7]) + 
+  geom_vline(aes(xintercept = 0), linetype = 2, color = swatch()[7]) +
+  geom_point() + 
+  geom_smooth(method = 'loess') + 
+  scale_x_continuous(limits = c(-1, 1)) + coord_cartesian(xlim = c(-1, 1), ylim = c(-1, 1), expand = c(0,0)) + 
+  labs(x = 'Average change of delay before a stop', y = 'Average change of delay after a stop')
+```
+
+Imagine that some tram has no delay at a given stop (let say: stop 0). At the consecutive stop (stop 1) it has 2 minutes delay and at the next one (stop 2), one minute. From a stop 1 perspective there have been 2 minute increment before it and -1 minute increment (reduction) after. Such scenario will be plotted at the point (2, -1) in this coordinate system.
+
+So as you can see, trams usually reduce big delay increments (not fully however) just after they occur.
+
+# Sample line delay quantiles
+
+Let's take a closer look at delays on a specific line. Delays rounded to integers were causing underperformance of models so I've decided to simulate continuity be jittering9adding uniform noise).
+
+```{r Subsetting, echo=TRUE}
+df52 <- dplyr::filter(report, number == 52, direction == 'Os.Piastów')
+df52$delay <- jitter(as.numeric(df52$delay), amount = 0.5)
+df52$delay[df52$delay < 0] <- 0
+```
+
+```{r Subsetting2, echo=TRUE}
+df52b <- dplyr::filter(report, number == 52, direction == 'Czerwone Maki P+R')
+df52b$delay <- jitter(as.numeric(df52b$delay), amount = 0.5)
+df52b$delay[df52b$delay < 0] <- 0
+```
+
+I've been using additive quantile regression models and that for two reason. Firstly, they are distribution agnostic (upto computational aspects) which is a great advantage in our case. Secondly they offer very nice interpretation from a passenger point of view. Suppose someone in hurry who can not tolerate delay greater then 3 minutes on her stop. Quantile model offers estimation of her success or failure probabilities. Information that mean delay on this stop at certain hour equals 2.5 minute would not be valuable in such a scenario.
+
+Here are graphs showing delay quantiles of line 52.
+
+```{r quantile reg, echo=TRUE, results='hide'}
+qgam_model_A <- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_A, fun = summary)
+
+qgam_model_B <- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_B, fun = summary)
+```
+
+```{r quantile regression 1 plot}
+resp_plot <- function(mqgamObject, type, seq_num = 10, minutefs = 12*60 + 30){
+  
+  if(type == 'seq_num'){
+  new <- data.frame(seq_num = sort(unique(mqgamObject$model$seq_num)),
+                    minutefs = rep(minutefs, length(unique(mqgamObject$model$seq_num))))
+  }
+  if(type == 'minutefs'){
+      new <- data.frame(seq_num = rep(seq_num, 38),
+                    minutefs = seq(60, 19*60 + 30, 30))
+  }
+  
+  data <- qdo(mqgamObject, fun = predict, newdata = new, type = 'response') %>% as.data.frame()
+  data <- sapply(data, function(col) sapply(col, function(element) max(element, 0))) %>% as.data.frame()
+  names(data) <- names(mqgamObject$fit)
+  
+  if(type == 'seq_num'){
+   plot <- cbind(new, data) %>%
+    ggplot(aes(x = seq_num)) +
+      geom_ribbon(aes(ymin = `0.2`, ymax = `0.9`), alpha = 0.25) +
+      geom_ribbon(aes(ymin = `0.2`, ymax = `0.8`), alpha = 0.3) +
+      geom_ribbon(aes(ymin = `0.3`, ymax = `0.7`), alpha = 0.4) +
+      geom_ribbon(aes(ymin = `0.4`, ymax = `0.6`), alpha = 0.5) +
+      geom_line(aes(y = `0.5`), color = swatch()[7], size = 2) +
+    #Graphical tuning
+      geom_text(data = data.frame(x = rep(nrow(data) -  0.5 , 8),
+                                   y = as.numeric(data[nrow(data), ]),
+                                   label = seq(0.2, 0.9, 0.1)),
+                 aes(x = x, y = y, label = paste0(100*label, '%'))) + 
+      labs(title = 
+            paste('Line:', mqgamObject$data$number[1], 
+                  '| Direction:', mqgamObject$data$direction[1]), 
+          subtitle = "Fitted delay quantiles", 
+           x = "", y = "Delay in minutes") +
+      theme(axis.text.x = element_text(angle = 60, hjust = 1, margin = margin(0, 0, 0, -1)),
+            axis.title.x = element_blank()) + 
+      scale_x_discrete(limits = 1:max(new$seq_num),
+                       labels = mqgamObject$data %>% arrange(seq_num) %>% `$`(stopName) %>% unique())
+  }
+  
+  if(type == 'minutefs'){
+   plot <- cbind(new, data) %>%
+    ggplot(aes(x = minutefs)) +
+      geom_ribbon(aes(ymin = `0.2`, ymax = `0.9`), alpha = 0.25) +
+      geom_ribbon(aes(ymin = `0.2`, ymax = `0.8`), alpha = 0.3) +
+      geom_ribbon(aes(ymin = `0.3`, ymax = `0.7`), alpha = 0.4) +
+      geom_ribbon(aes(ymin = `0.4`, ymax = `0.6`), alpha = 0.5) +
+      geom_line(aes(y = `0.5`), color = swatch()[7], size = 2) +
+    #Graphical tuning
+      geom_text(data = data.frame(x = rep(1140 , 8),
+                                   y = as.numeric(data[nrow(data), ]),
+                                   label = seq(0.2, 0.9, 0.1)),
+                 aes(x = x, y = y, label = paste0(100*label, '%'))) + 
+     labs(title = 
+            paste('Line:', mqgamObject$data$number[1], 
+                  '| Direction:', mqgamObject$data$direction[1], 
+                  '| Stop:',  (mqgamObject$data %>% select(seq_num, stopName) %>% arrange(seq_num) %>% unique())$stopName[seq_num]), 
+          subtitle = "Fitted delay qunatiles", 
+           x = "", y = "Delay in minutes") + 
+      theme(axis.text.x = element_text(angle = 60, hjust = 1, margin = margin(0, 0, 0, -1)),
+            axis.title.x = element_blank()) +  
+      scale_x_continuous(breaks = seq(60, 19*60, 120), 
+                       labels = paste0(seq(5, 23, 2), rep(":00", 9)))
+  }
+  plot
+}
+```
+
+```{r}
+resp_plot(qgam_model_A, type = 'seq_num') + coord_cartesian(ylim = c(0, 5)) + 
+  labs(title = 'Line: 52 | Direction: Os. Piastów | 16:30')
+
+resp_plot(qgam_model_B, type = 'seq_num', minutefs = 6*60) + coord_cartesian(ylim = c(0, 5)) +
+  labs(title = 'Line: 52 | Direction: Czerwone Maki P+R | 10:00')
+```
+
+Let's take a look, for example, for the Grota-Roweckiego stop on second plot (5th from the end). The bolded line, corresponding to median is at the height of about 1 minute 40 seconds. It means that half of delays is smaller than that. Line corresponding to 80% is at the height of around 3 minutes. So you have about 80% chances that your delay at Grota-Roweckiego will be less than 80%, and so on.
+
+We can also see how the delay varies at time. The plot below shows the median delay on Dworzec Główny (Main Railway Station) in Os. Piastów direction (upper plot above).
+
+```{r, fig.height = 4}
+new <- data.frame(seq_num = rep(17, 36),
+                    minutefs = seq(60, 18*60 + 30, 30))
+
+qdo(qgam_model_A, fun = predict, newdata = new, qu = 0.5) %>% cbind(delay = ., new) %>% 
+  ggplot(aes(x = minutefs, y = 0, height = delay)) + ggridges::geom_ridgeline_gradient(aes(fill = delay), size = 0) + viridis::scale_fill_viridis() + 
+   scale_x_continuous(breaks = seq(60, 18*60 + 30, 240), labels = c('5:00', "9:00", "13:00", "17:00", "21:00")) + labs(title = 'Line: 52 | Direction: Os. Piastów | Stop: Dworzec Główny', x = '', y = '', subtitle = 'Median of delay') + theme(legend.position = 'none')
+```
+
+The more interesting thing is to see how do peaks and valleys of delay along a day change from one stop to another. It is shown on graphs below. Because differences in delays are greater between stops than between hours, values of median delay are all scaled to [0, 1] within each stop. It is like taking only colors from the plot above and not looking at the height of the curve.
+
+```{r}
+many_median <- function(mqgamObject){
+  new <- expand.grid(seq_num = unique(mqgamObject$model$seq_num),
+                    minutefs = seq(60, 18*60 + 30, 30))
+  
+  data <- qdo(mqgamObject, fun = predict, newdata = new, type = 'response', qu = 0.5) %>% as.data.frame()
+  data <- sapply(data, function(col) sapply(col, function(element) max(element, 0))) %>% as.data.frame()
+  names(data) <- 0.5
+  
+   cbind(new, data) %>% group_by(seq_num) %>% 
+     mutate(`0.5` = (`0.5` - min(`0.5`))/(max(`0.5`) - min(`0.5`))) %>% ungroup() %>% 
+     ggplot(aes(x = factor(minutefs),
+                y = -seq_num + max(seq_num + 1),
+                fill = `0.5`)) + geom_tile() + 
+      scale_y_discrete(limits = max(new$seq_num):1,
+                       labels = mqgamObject$data %>% arrange(seq_num) %>% `$`(stopName) %>% unique()) + 
+   scale_x_discrete(breaks = seq(60, 18*60 + 30, 240), labels = c('5:00', "9:00", "13:00", "17:00", "21:00")) + viridis::scale_fill_viridis() + 
+   theme(panel.grid.major = element_line(colour = NA), 
+    panel.grid.minor = element_line(colour = NA), 
+    panel.background = element_rect(fill = NA), 
+    legend.position = "none",
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()) + 
+  labs(title = paste('Line:', mqgamObject$data$number[1], '| Direction:', mqgamObject$data$direction[1]), subtitle = "Scaled median of delays at different hours")
+  }
+
+many_median(qgam_model_A)
+many_median(qgam_model_B)
+```
+
+In both directions a different peak (afternoon and morning respectively) is dominant. The second is present but only at the fragment between Czerwone Maki P+R loop and surroundings of Main Railway Station (Dworzec Główny). One may think that this kind of symmetry (even if distorted) is something to be expected but actually it rarely happen on different lines. It would be interesting to compare those data with passenger flow. 

@@ -2,101 +2,81 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on adam::blog</title>
-    <link>/en/tags/</link>
+    <link>http://localhost:1313/en/tags/</link>
     <description>Recent content in Tags on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
-    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Defoe</title>
-      <link>/en/tags/defoe/</link>
+      <link>http://localhost:1313/en/tags/defoe/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/defoe/</guid>
+      <guid>http://localhost:1313/en/tags/defoe/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>epidemiscs</title>
-      <link>/en/tags/epidemiscs/</link>
+      <title>Epidemiscs</title>
+      <link>http://localhost:1313/en/tags/epidemiscs/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/epidemiscs/</guid>
+      <guid>http://localhost:1313/en/tags/epidemiscs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>plague</title>
-      <link>/en/tags/plague/</link>
+      <title>Plague</title>
+      <link>http://localhost:1313/en/tags/plague/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/plague/</guid>
+      <guid>http://localhost:1313/en/tags/plague/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SIR</title>
-      <link>/en/tags/sir/</link>
+      <link>http://localhost:1313/en/tags/sir/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/sir/</guid>
+      <guid>http://localhost:1313/en/tags/sir/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ARIMAX</title>
-      <link>/en/tags/arimax/</link>
+      <link>http://localhost:1313/en/tags/arimax/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/arimax/</guid>
+      <guid>http://localhost:1313/en/tags/arimax/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Kraków</title>
-      <link>/en/tags/krak%C3%B3w/</link>
+      <link>http://localhost:1313/en/tags/krak%C3%B3w/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/krak%C3%B3w/</guid>
+      <guid>http://localhost:1313/en/tags/krak%C3%B3w/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>local</title>
-      <link>/en/tags/local/</link>
+      <title>Local</title>
+      <link>http://localhost:1313/en/tags/local/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/local/</guid>
+      <guid>http://localhost:1313/en/tags/local/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>smog</title>
-      <link>/en/tags/smog/</link>
+      <title>Smog</title>
+      <link>http://localhost:1313/en/tags/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/smog/</guid>
+      <guid>http://localhost:1313/en/tags/smog/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>quantile regression</title>
-      <link>/en/tags/quantile-regression/</link>
+      <title>Quantile Regression</title>
+      <link>http://localhost:1313/en/tags/quantile-regression/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/quantile-regression/</guid>
+      <guid>http://localhost:1313/en/tags/quantile-regression/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>trams</title>
-      <link>/en/tags/trams/</link>
+      <title>Trams</title>
+      <link>http://localhost:1313/en/tags/trams/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/tags/trams/</guid>
+      <guid>http://localhost:1313/en/tags/trams/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -1,18 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>/pl/sitemap.xml</loc>
-    
-      <lastmod>2020-07-02T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>/en/sitemap.xml</loc>
-    
-      <lastmod>2021-11-26T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/defoe/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/epidemiscs/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/plague/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sir/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/upon-a-journal-of-the-plague-year.en/</loc>
+    <lastmod>2021-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/arytmetyka/</loc>
+    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/diofantos/</loc>
+    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/greka/</loc>
+    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/2020-07-25-hipsteralgebra/</loc>
+    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/arimax/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/krak%C3%B3w/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/local/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/smog/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/smog.en/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/quantile-regression/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/regresja-kwantylowa/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/kraktram/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/kraktram.en/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/trams/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tramwaje/</loc>
+    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/_index.en/</loc>
+  </url><url>
+    <loc>http://localhost:1313/page/about.en/</loc>
+  </url><url>
+    <loc>http://localhost:1313/page/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/page/</loc>
+  </url>
+</urlset>

@@ -2,20 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kraków on adam::blog</title>
-    <link>/tags/krak%C3%B3w/</link>
+    <link>http://localhost:1313/tags/krak%C3%B3w/</link>
     <description>Recent content in Kraków on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>pl</language>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/krak%C3%B3w/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/krak%C3%B3w/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Smog and transport resolution in Kraków</title>
+      <link>http://localhost:1313/post/smog.en/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/post/smog.en/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts. But what was criticized then was the accuracy of those forecasts. From 5th July 2018 both criteria are used. Which is a good idea as I show below.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Spóźnienia krakowskich tramwajów</title>
-      <link>/post/kraktram/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/post/kraktram/</guid>
-      <description>Od pewnego czasu na stronie ttss.krakow.pl możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (Traffic Tram Supervision System), na ttss.krakow.pl/internetservice/. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił pro publico bono znacznie wygodniejszą wersję mapki (https://mpk.</description>
+      <link>http://localhost:1313/post/kraktram/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/post/kraktram/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;Od pewnego czasu na stronie &lt;a href=&#34;http://www.ttss.krakow.pl/&#34;&gt;ttss.krakow.pl&lt;/a&gt; możemy podglądać informacje, które na co dzień widzimy w Krakowie na przystankowych tablicach elektronicznych. Prawdziwa zabawa zaczyna się jednak, gdy wejdziemy wgłąb strony TTSS (&lt;em&gt;Traffic Tram Supervision System&lt;/em&gt;), na &lt;a href=&#34;http://www.ttss.krakow.pl/internetservice/&#34;&gt;ttss.krakow.pl/internetservice/&lt;/a&gt;. Znajdziemy tam serwis w którym można na żywo śledzić położenie tramwajów na mapie, trasy poszczególnych składów, czy przewidywane czasy odjazdów. O stronie zrobiło się głośno, gdy Jacek Kowalski przygotował i udostępnił &lt;em&gt;pro publico bono&lt;/em&gt; znacznie wygodniejszą wersję mapki (&lt;a href=&#34;https://mpk.jacekk.net&#34; class=&#34;uri&#34;&gt;https://mpk.jacekk.net&lt;/a&gt;). Od tego czasu powstało też kilka innych stron i aplikacji oferujących dostęp do serwisu. Natomiast ja postanowiłem pobrać z niego trochę danych i na ich podstawie przeanalizować, jak się spóźniają krakowskie tramwaje.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Tram delays in Kraków</title>
+      <link>http://localhost:1313/post/kraktram.en/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/post/kraktram.en/</guid>
+      <description>&lt;p&gt;When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.&lt;/p&gt;&#xA;&lt;p&gt;The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

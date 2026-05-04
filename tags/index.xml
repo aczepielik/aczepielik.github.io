@@ -2,65 +2,118 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on adam::blog</title>
-    <link>/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>pl</language>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Defoe</title>
+      <link>http://localhost:1313/tags/defoe/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/defoe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Epidemiscs</title>
+      <link>http://localhost:1313/tags/epidemiscs/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/epidemiscs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Plague</title>
+      <link>http://localhost:1313/tags/plague/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/plague/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SIR</title>
+      <link>http://localhost:1313/tags/sir/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/sir/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Arytmetyka</title>
-      <link>/tags/arytmetyka/</link>
-      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/arytmetyka/</guid>
+      <link>http://localhost:1313/tags/arytmetyka/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/arytmetyka/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Diofantos</title>
-      <link>/tags/diofantos/</link>
-      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/diofantos/</guid>
+      <link>http://localhost:1313/tags/diofantos/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/diofantos/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Greka</title>
-      <link>/tags/greka/</link>
-      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/greka/</guid>
+      <link>http://localhost:1313/tags/greka/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/greka/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>ARIMAX</title>
+      <link>http://localhost:1313/tags/arimax/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/arimax/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Kraków</title>
-      <link>/tags/krak%C3%B3w/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/krak%C3%B3w/</guid>
+      <link>http://localhost:1313/tags/krak%C3%B3w/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/krak%C3%B3w/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>regresja kwantylowa</title>
-      <link>/tags/regresja-kwantylowa/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/regresja-kwantylowa/</guid>
+      <title>Local</title>
+      <link>http://localhost:1313/tags/local/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/local/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tramwaje</title>
-      <link>/tags/tramwaje/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/tags/tramwaje/</guid>
+      <title>Smog</title>
+      <link>http://localhost:1313/tags/smog/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/smog/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Quantile Regression</title>
+      <link>http://localhost:1313/tags/quantile-regression/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/quantile-regression/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regresja Kwantylowa</title>
+      <link>http://localhost:1313/tags/regresja-kwantylowa/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/regresja-kwantylowa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trams</title>
+      <link>http://localhost:1313/tags/trams/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/trams/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tramwaje</title>
+      <link>http://localhost:1313/tags/tramwaje/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/tags/tramwaje/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
