@@ -32,24 +32,55 @@
 <script>
 /* Map Patch: Replace Stamen Tiles */
 (function() {
-  var checkLeaflet = setInterval(function() {
-    if (typeof L !== 'undefined' && L.tileLayer && L.tileLayer.provider) {
-      clearInterval(checkLeaflet);
+  var patchStamen = function() {
+    var cartoUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    var cartoAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+    
+    // 1. Patch the providers object if it exists
+    if (typeof L !== 'undefined' && L.TileLayer && L.TileLayer.Provider && L.TileLayer.Provider.providers) {
+      var s = L.TileLayer.Provider.providers.Stamen;
+      if (s && s.url.indexOf('stamen') !== -1) {
+        console.log("Patching Stamen provider object...");
+        s.url = cartoUrl;
+        s.options.attribution = cartoAttrib;
+      }
+    }
+
+    // 2. Intercept provider calls to handle opacity and dynamic calls
+    if (typeof L !== 'undefined' && L.tileLayer && L.tileLayer.provider && !L.tileLayer.provider._patched) {
+      console.log("Installing Stamen provider interceptor...");
       var originalProvider = L.tileLayer.provider;
       L.tileLayer.provider = function(name, options) {
         if (name.indexOf('Stamen') === 0) {
-          console.log("Patching Stamen provider: " + name);
-          return L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          console.log("Intercepting Stamen provider call: " + name);
+          var opts = options || {};
+          // If opacity is too low (common for TonerLines), force it to 1.0 for the replacement base map
+          if (typeof opts.opacity !== 'undefined' && opts.opacity < 0.8) {
+            opts.opacity = 1.0;
+          }
+          return L.tileLayer(cartoUrl, L.extend({}, opts, {
+            attribution: cartoAttrib,
             subdomains: 'abcd',
             maxZoom: 20
-          });
+          }));
         }
         return originalProvider.apply(L.tileLayer, arguments);
       };
+      L.tileLayer.provider._patched = true;
+      return true;
     }
-  }, 10);
+    return false;
+  };
+  
+  if (!patchStamen()) {
+    var count = 0;
+    var interval = setInterval(function() {
+      if (patchStamen() || count++ > 50) clearInterval(interval);
+    }, 100);
+  }
 })();
 </script>
+
+
 </body>
 </html>
