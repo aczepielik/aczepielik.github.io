@@ -2,39 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on adam::blog</title>
-    <link>/en/post/</link>
+    <link>http://localhost:1313/en/post/</link>
     <description>Recent content in Posts on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
-    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Upon &#34;A Journal of the Plague Year&#34;</title>
-      <link>/en/post/upon-a-journal-of-the-plague-year/</link>
+      <link>http://localhost:1313/en/post/upon-a-journal-of-the-plague-year/</link>
       <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/upon-a-journal-of-the-plague-year/</guid>
-      <description>He was only five years old when the Great Plague broke out so could not remember it. To describe it, nearly sixty years later, in his novel, Daniel Defoe needed to dust off faded diaries, survey old medical pamphlets and query archival statistics. Well done research paid off. For decades the readers of “A Journal of the Plague Year” were thinking they are reading genuine memoirs of the 1665’s Great Plague eyewitness.</description>
+      <guid>http://localhost:1313/en/post/upon-a-journal-of-the-plague-year/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;He was only five years old when the Great Plague broke out so could not remember it. To describe it, nearly sixty years later, in his novel, Daniel Defoe needed to dust off faded diaries, survey old medical pamphlets and query archival statistics. Well done research paid off. For decades the readers of “A Journal of the Plague Year” were thinking they are reading genuine memoirs of the 1665’s Great Plague eyewitness. Concerning statistics included in the “Journals”, they cannot be said deluded, though. These were real and for their substantial use, we can call the “Journal” a data-based fiction. And data-based fiction is never closed for augmentation: data can speak more than the author transmitted. I want to give them a voice once again in this letter. A letter to “Journal’s” narrator, from a data scientist writing in the second plague year.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Smog and transport resolution in Kraków</title>
-      <link>/en/post/smog/</link>
+      <link>http://localhost:1313/en/post/smog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/smog/</guid>
-      <description>In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts.</description>
+      <guid>http://localhost:1313/en/post/smog/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts. But what was criticized then was the accuracy of those forecasts. From 5th July 2018 both criteria are used. Which is a good idea as I show below.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Tram delays in Kraków</title>
-      <link>/en/post/kraktram/</link>
+      <link>http://localhost:1313/en/post/kraktram/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/post/kraktram/</guid>
-      <description>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.
-The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</description>
+      <guid>http://localhost:1313/en/post/kraktram/</guid>
+      <description>&lt;p&gt;When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.&lt;/p&gt;&#xA;&lt;p&gt;The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

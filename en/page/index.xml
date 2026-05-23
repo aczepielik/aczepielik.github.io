@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on adam::blog</title>
-    <link>/en/page/</link>
+    <link>http://localhost:1313/en/page/</link>
     <description>Recent content in Pages on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
-    <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster><atom:link href="/en/page/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/en/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adam Czepielik</title>
-      <link>/en/page/about/</link>
+      <link>http://localhost:1313/en/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/en/page/about/</guid>
-      <description>I&amp;rsquo;m a data scientist, based in Kraków, Poland.
-From time to time I find myself trapped in a curiosity well around some topic. At that time my friends can freqently hear &amp;ldquo;I about to write a blog post about X, it&amp;rsquo;s exciting&amp;rdquo;. Then, well, several months have to pass and then I post.
-Anyway, here&amp;rsquo;s my CV:</description>
+      <guid>http://localhost:1313/en/page/about/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a data scientist, based in Kraków, Poland.&lt;/p&gt;&#xA;&lt;p&gt;From time to time I find myself trapped in a curiosity well around some topic. At that time my friends can freqently hear &amp;ldquo;I about to write a blog post about X, it&amp;rsquo;s exciting&amp;rdquo;. Then, well, several months have to pass and then I post.&lt;/p&gt;&#xA;&lt;p&gt;Anyway, here&amp;rsquo;s my CV:&lt;/p&gt;&#xA;&lt;object data=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; style=&#34;width:750px; height:1100px&#34;&gt;&#xA;  &lt;embed src=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; /&gt;&#xA;&lt;/object&gt;</description>
     </item>
-    
   </channel>
 </rss>

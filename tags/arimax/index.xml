@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Arimax on adam::blog</title>
-    <link>/tags/arimax/</link>
-    <description>Recent content in Arimax on adam::blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>ARIMAX on adam::blog</title>
+    <link>http://localhost:1313/tags/arimax/</link>
+    <description>Recent content in ARIMAX on adam::blog</description>
+    <generator>Hugo</generator>
+    <language>pl</language>
     <managingEditor>adam.czepielik@gmail.com (Adam Czepielik)</managingEditor>
     <webMaster>adam.czepielik@gmail.com (Adam Czepielik)</webMaster>
-    <lastBuildDate>Sat, 15 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/arimax/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/arimax/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Smog and transport policy</title>
-      <link>/post/smog-and-transport-policy/</link>
-      <pubDate>Sat, 15 Sep 2018 00:00:00 +0000</pubDate>
-      <author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>/post/smog-and-transport-policy/</guid>
-      <description>In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Two versions of this resolution have been in use. In the former, decision about providing free transport was on a basis of measurements from past days. In the current version it is based on forecasts. In the first part of the post I explore validity of particular decisions and check some common opinions about them.</description>
+      <title>Smog and transport resolution in Kraków</title>
+      <link>http://localhost:1313/post/smog.en/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/post/smog.en/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;In this post I take a look at the resolution providing free transport for car drivers in case of huge air pollution, adopted in Krakow in 2015. Three versions of this resolution have been in use. In the first version, decision about providing free transport was on a basis of measurements from the previous day. But this method was criticized for having one-day lags in decisions. In the next version decisions were based on forecasts. But what was criticized then was the accuracy of those forecasts. From 5th July 2018 both criteria are used. Which is a good idea as I show below.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

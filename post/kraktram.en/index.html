@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tram delays in Kraków | adam::blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/r.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+  </head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+  <div class="container">
+    <header>
+      
+        <div class="site-title"><a href="/">adam::blog</a></div>
+      
+      <nav>
+        
+          <a href="/page/about/">Bio</a>
+        
+          <a href="/">Blog</a>
+        
+        
+        
+          <a href="https://github.com/aczepielik" target="_blank" rel="noopener" title="GitHub" class="nav-icon" aria-label="GitHub Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        
+
+        
+          
+            
+          
+        
+      </nav>
+    </header>
+
+    <main id="content">
+      
+<div class="article-header">
+  
+  <span class="post-date">2018-08-29</span>
+  
+  <h1>Tram delays in Kraków</h1>
+</div>
+
+<article>
+  
+
+
+<p>When I was learning how to work with APIs in R few months ago, I discovered there is an API for tram locations and departures in my home town - Kraków. Since then I’ve been planning the analysis of tram delays based on it and eventually I’ve taken it as my personal summer project.</p>
+<p>The entire report in Polish is dozens page long. Here, on the English side of the blog, I omit the overview of data preparation and technical details, which are important but not so much interesting and present several selected insights.</p>
+<p>One important remark: collected data correspond to holiday timetable and are not representative for the ordinary one.</p>
+<div id="distribution" class="section level1">
+<h1>Distribution</h1>
+<p>Let us start with the distribution of delays.</p>
+<p><img src="/post/kraktram.en_files/figure-html/delay-histogram-1.png" width="95%" /></p>
+<p>A pessimist could say that more than half of the trams depart late. An optimist, on the other hand, that the vast majority of delays small ones, up to 2 minutes and 1 minute delays are negligible because the round-off error equals 1 minute. Anyway, the average lateness in the sample equals one minute and 0.3 seconds, and the standard deviation is one minute and 23 seconds (1.39 minutes). This distribution can not be easily identified with any of the well-known distributions from textbooks, regardless of whether we treat lateness as a discrete variable or as a continuous but fraught with rounding errors.</p>
+</div>
+<div id="maps" class="section level1">
+<h1>Maps</h1>
+<p>Two interactive maps below show mean delays on stops and delay changes between them.</p>
+<iframe src="/en/post/kraktram.en_files/stop_map.en.html" height="400" width="100%" allowfullscreen="true">
+</iframe>
+<p>The mean delay on a particular stops almost always summarizes delays on different paths with this stop in a middle. Those different paths (at least two opposite directions) can differ, sometimes strongly, from each other with respect to average delay. Therefore, I specify mean delay on each path in pop-ups. As system measures departures, not arrivals, there are missing values near loops (NA for names, NaN for values).</p>
+<iframe src="/en/post/kraktram.en_files/routes_map.en.html" allowfullscreen="true" height="400" width="100%">
+</iframe>
+<div id="one-observation-from-the-second-map" class="section level2">
+<h2>One observation from the second map</h2>
+<p>Does it appear to you that intensive-red segments (big delay increase) tend to lie next to intensive-blue (big decrease)? Yes, they are! The graph below shows mean delay change after a given stop against the change before it.</p>
+<p><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-3-1.png" width="70%" /></p>
+<p>Imagine that some tram has no delay at a given stop (let say: stop 0). At the consecutive stop (stop 1) it has 2 minutes delay and at the next one (stop 2), one minute. From a stop 1 perspective there have been 2 minute increment before it and -1 minute increment (reduction) after. Such scenario will be plotted at the point (2, -1) in this coordinate system.</p>
+<p>So as you can see, trams usually reduce big delay increments (not fully however) just after they occur.</p>
+</div>
+</div>
+<div id="sample-line-delay-quantiles" class="section level1">
+<h1>Sample line delay quantiles</h1>
+<p>Let’s take a closer look at delays on a specific line. Delays rounded to integers were causing underperformance of models so I’ve decided to simulate continuity be jittering9adding uniform noise).</p>
+<pre class="r"><code>df52 &lt;- dplyr::filter(report, number == 52, direction == &#39;Os.Piastów&#39;)
+df52$delay &lt;- jitter(as.numeric(df52$delay), amount = 0.5)
+df52$delay[df52$delay &lt; 0] &lt;- 0</code></pre>
+<pre class="r"><code>df52b &lt;- dplyr::filter(report, number == 52, direction == &#39;Czerwone Maki P+R&#39;)
+df52b$delay &lt;- jitter(as.numeric(df52b$delay), amount = 0.5)
+df52b$delay[df52b$delay &lt; 0] &lt;- 0</code></pre>
+<p>I’ve been using additive quantile regression models and that for two reason. Firstly, they are distribution agnostic (upto computational aspects) which is a great advantage in our case. Secondly they offer very nice interpretation from a passenger point of view. Suppose someone in hurry who can not tolerate delay greater then 3 minutes on her stop. Quantile model offers estimation of her success or failure probabilities. Information that mean delay on this stop at certain hour equals 2.5 minute would not be valuable in such a scenario.</p>
+<p>Here are graphs showing delay quantiles of line 52.</p>
+<pre class="r"><code>qgam_model_A &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_A, fun = summary)
+
+qgam_model_B &lt;- mqgam(delay ~ ti(seq_num, k = 30) + ti(minutefs, k = 8) + ti(seq_num, minutefs), data = df52b, qu = seq(0.2, 0.9, 0.1))
+qdo(qgam_model_B, fun = summary)</code></pre>
+<p><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-4-1.png" width="95%" /><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-4-2.png" width="95%" /></p>
+<p>Let’s take a look, for example, for the Grota-Roweckiego stop on second plot (5th from the end). The bolded line, corresponding to median is at the height of about 1 minute 40 seconds. It means that half of delays is smaller than that. Line corresponding to 80% is at the height of around 3 minutes. So you have about 80% chances that your delay at Grota-Roweckiego will be less than 80%, and so on.</p>
+<p>We can also see how the delay varies at time. The plot below shows the median delay on Dworzec Główny (Main Railway Station) in Os. Piastów direction (upper plot above).</p>
+<p><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-5-1.png" width="95%" /></p>
+<p>The more interesting thing is to see how do peaks and valleys of delay along a day change from one stop to another. It is shown on graphs below. Because differences in delays are greater between stops than between hours, values of median delay are all scaled to [0, 1] within each stop. It is like taking only colors from the plot above and not looking at the height of the curve.</p>
+<p><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-6-1.png" width="95%" /><img src="/post/kraktram.en_files/figure-html/unnamed-chunk-6-2.png" width="95%" /></p>
+<p>In both directions a different peak (afternoon and morning respectively) is dominant. The second is present but only at the fragment between Czerwone Maki P+R loop and surroundings of Main Railway Station (Dworzec Główny). One may think that this kind of symmetry (even if distorted) is something to be expected but actually it rarely happen on different lines. It would be interesting to compare those data with passenger flow.</p>
+</div>
+
+</article>
+
+
+    </main>
+
+    <footer>
+      
+      <div class="footer-section footer-nav">
+        <a href="/" title="Home" aria-label="Back to Home">
+          <span class="back-arrow" aria-hidden="true">←</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </a>
+      </div>
+      
+      
+      <div class="footer-section footer-legal">
+        <div class="copyright">
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="cc-link" aria-label="Creative Commons BY-SA 4.0 License">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-top: -2px; margin-right: 4px;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M10 9.3a2.8 2.8 0 1 0 0 5.4m4-5.4a2.8 2.8 0 1 1 0 5.4"></path></svg>
+            CC BY-SA 4.0
+          </a>
+          &nbsp;&middot;&nbsp;
+          2026 
+          Adam Czepielik
+        </div>
+        
+
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
