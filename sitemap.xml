@@ -73,11 +73,11 @@
   </url><url>
     <loc>http://localhost:1313/_index.en/</loc>
   </url><url>
-    <loc>http://localhost:1313/page/about.en/</loc>
-  </url><url>
     <loc>http://localhost:1313/page/about/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/cv/</loc>
   </url><url>
     <loc>http://localhost:1313/page/</loc>
   </url>

@@ -11,17 +11,10 @@
     <atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adam Czepielik</title>
-      <link>http://localhost:1313/page/about.en/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>http://localhost:1313/page/about.en/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m a data scientist, based in Kraków, Poland.&lt;/p&gt;&#xA;&lt;p&gt;From time to time I find myself trapped in a curiosity well around some topic. At that time my friends can freqently hear &amp;ldquo;I about to write a blog post about X, it&amp;rsquo;s exciting&amp;rdquo;. Then, well, several months have to pass and then I post.&lt;/p&gt;&#xA;&lt;p&gt;Anyway, here&amp;rsquo;s my CV:&lt;/p&gt;&#xA;&lt;object data=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; style=&#34;width:750px; height:1100px&#34;&gt;&#xA;  &lt;embed src=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; /&gt;&#xA;&lt;/object&gt;</description>
-    </item>
-    <item>
-      <title>Adam Czepielik</title>
       <link>http://localhost:1313/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
       <guid>http://localhost:1313/page/about/</guid>
-      <description>&lt;p&gt;Jestem abolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako analityk danych. Niektóre z przedsięwzięć, którymi zajmuję się po godzinach, rozrastają się na tyle, że warto opublikować ich wyniki. Wtedy wrzucam je na tego bloga.&lt;br&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cv&#34;&gt;CV&lt;/h2&gt;&#xA;&lt;object data=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; style=&#34;width:750px; height:1100px&#34;&gt;&#xA;  &lt;embed src=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; /&gt;&#xA;&lt;/object&gt;</description>
+      <description>&lt;p&gt;Jestem absolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako data scientist. Niektóre z moich zainteresowań rozrastają się na tyle, że warto opublikować ich wyniki — od analiz transportowych po tłumaczenia tekstów starogreckich. Ten blog to miejsce, gdzie te poszukiwania znajdują swój finał.&lt;/p&gt;&#xA;&lt;h3 id=&#34;profil-zawodowy&#34;&gt;Profil Zawodowy&lt;/h3&gt;&#xA;&lt;p&gt;Obecnie zajmuję się wdrażaniem rozwiązań machine learning, badaniem sprawiedliwości modeli (fairness) oraz modelowaniem akcelerowanym przez GPU.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a data scientist based in Kraków, Poland, with a background in mathematics and a penchant for deep-diving into curiosity wells. When a topic catches my attention, I often find myself documenting the journey—ranging from public transport analysis to translating ancient Greek texts.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

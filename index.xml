@@ -54,17 +54,17 @@
     </item>
     <item>
       <title>Adam Czepielik</title>
-      <link>http://localhost:1313/page/about.en/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
-      <guid>http://localhost:1313/page/about.en/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m a data scientist, based in Kraków, Poland.&lt;/p&gt;&#xA;&lt;p&gt;From time to time I find myself trapped in a curiosity well around some topic. At that time my friends can freqently hear &amp;ldquo;I about to write a blog post about X, it&amp;rsquo;s exciting&amp;rdquo;. Then, well, several months have to pass and then I post.&lt;/p&gt;&#xA;&lt;p&gt;Anyway, here&amp;rsquo;s my CV:&lt;/p&gt;&#xA;&lt;object data=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; style=&#34;width:750px; height:1100px&#34;&gt;&#xA;  &lt;embed src=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; /&gt;&#xA;&lt;/object&gt;</description>
-    </item>
-    <item>
-      <title>Adam Czepielik</title>
       <link>http://localhost:1313/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
       <guid>http://localhost:1313/page/about/</guid>
-      <description>&lt;p&gt;Jestem abolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako analityk danych. Niektóre z przedsięwzięć, którymi zajmuję się po godzinach, rozrastają się na tyle, że warto opublikować ich wyniki. Wtedy wrzucam je na tego bloga.&lt;br&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cv&#34;&gt;CV&lt;/h2&gt;&#xA;&lt;object data=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; style=&#34;width:750px; height:1100px&#34;&gt;&#xA;  &lt;embed src=&#34;../../../files/czepielikCV.pdf&#34; type=&#34;application/pdf&#34; /&gt;&#xA;&lt;/object&gt;</description>
+      <description>&lt;p&gt;Jestem absolwentem matematyki na Uniwersytecie Jagiellońskim, zawodowo pracuję jako data scientist. Niektóre z moich zainteresowań rozrastają się na tyle, że warto opublikować ich wyniki — od analiz transportowych po tłumaczenia tekstów starogreckich. Ten blog to miejsce, gdzie te poszukiwania znajdują swój finał.&lt;/p&gt;&#xA;&lt;h3 id=&#34;profil-zawodowy&#34;&gt;Profil Zawodowy&lt;/h3&gt;&#xA;&lt;p&gt;Obecnie zajmuję się wdrażaniem rozwiązań machine learning, badaniem sprawiedliwości modeli (fairness) oraz modelowaniem akcelerowanym przez GPU.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a data scientist based in Kraków, Poland, with a background in mathematics and a penchant for deep-diving into curiosity wells. When a topic catches my attention, I often find myself documenting the journey—ranging from public transport analysis to translating ancient Greek texts.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>http://localhost:1313/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>adam.czepielik@gmail.com (Adam Czepielik)</author>
+      <guid>http://localhost:1313/cv/</guid>
+      <description>&lt;h1 id=&#34;adam-czepielik&#34;&gt;Adam Czepielik&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:adam.czepielik@gmail.com&#34;&gt;adam.czepielik@gmail.com&lt;/a&gt; | &lt;strong&gt;Phone:&lt;/strong&gt; [Redacted] | &lt;strong&gt;CV:&lt;/strong&gt; &lt;a href=&#34;http://localhost:1313/files/czepielikCV.pdf&#34;&gt;PDF &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;14&#34; height=&#34;14&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; class=&#34;feather feather-file-text&#34; style=&#34;vertical-align: middle; margin-top: -2px;&#34;&gt;&lt;path d=&#34;M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z&#34;&gt;&lt;/path&gt;&lt;polyline points=&#34;14 2 14 8 20 8&#34;&gt;&lt;/polyline&gt;&lt;line x1=&#34;16&#34; y1=&#34;13&#34; x2=&#34;8&#34; y2=&#34;13&#34;&gt;&lt;/line&gt;&lt;line x1=&#34;16&#34; y1=&#34;17&#34; x2=&#34;8&#34; y2=&#34;17&#34;&gt;&lt;/line&gt;&lt;polyline points=&#34;10 9 9 9 8 9&#34;&gt;&lt;/polyline&gt;&lt;/svg&gt;&lt;/a&gt;&lt;br&gt;&#xA;&lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href=&#34;https://github.com/aczepielik&#34;&gt;github.com/aczepielik&lt;/a&gt; | &lt;strong&gt;Blog:&lt;/strong&gt; &lt;a href=&#34;https://aczepielik.github.io&#34;&gt;aczepielik.github.io&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;&#xA;&lt;p&gt;Data Scientist with over 5 years of experience developing production-grade machine learning solutions across insurance and retail domains. Proven track record in delivering end-to-end data science projects from exploratory analysis through model deployment and monitoring.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
